@@ -1,67 +1,73 @@
-<svg width="512" height="512" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Ghanima — Feyris' mascot. A silver chinchilla doll-face Persian, dedicated to a very good girl. -->
+<svg width="512" height="512" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Feyris mascot — Ghanima">
+  <!-- Ghanima: silver chinchilla doll-face Persian. Dedicated mascot of Feyris. -->
   <defs>
-    <linearGradient id="furGrad" x1="16" y1="8" x2="48" y2="58">
-      <stop offset="0%" stop-color="#f5f2ec" />
-      <stop offset="45%" stop-color="#d8d4cb" />
-      <stop offset="100%" stop-color="#a9a59c" />
+    <linearGradient id="feyFur" x1="16" y1="8" x2="48" y2="58">
+      <stop offset="0%" stop-color="#f7f4ef"/>
+      <stop offset="40%" stop-color="#ddd9d0"/>
+      <stop offset="100%" stop-color="#a8a49b"/>
     </linearGradient>
-    <radialGradient id="irisGrad" cx="45%" cy="40%" r="65%">
-      <stop offset="0%" stop-color="#f0d68a" />
-      <stop offset="60%" stop-color="#c8a44e" />
-      <stop offset="100%" stop-color="#8a7235" />
+    <radialGradient id="feyIris" cx="42%" cy="38%" r="68%">
+      <stop offset="0%" stop-color="#f3dfa0"/>
+      <stop offset="55%" stop-color="#c8a44e"/>
+      <stop offset="100%" stop-color="#7a6430"/>
     </radialGradient>
-    <linearGradient id="goldGrad" x1="24" y1="6" x2="40" y2="18">
-      <stop offset="0%" stop-color="#f0d68a" />
-      <stop offset="55%" stop-color="#c8a44e" />
-      <stop offset="100%" stop-color="#8a7235" />
+    <linearGradient id="feyGold" x1="24" y1="5" x2="40" y2="18">
+      <stop offset="0%" stop-color="#f3dfa0"/>
+      <stop offset="55%" stop-color="#c8a44e"/>
+      <stop offset="100%" stop-color="#8a7235"/>
     </linearGradient>
-    <radialGradient id="gemGrad" cx="35%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#9b7fd4" />
-      <stop offset="100%" stop-color="#5a3d8a" />
+    <radialGradient id="feyGem" cx="35%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#b08fdc"/>
+      <stop offset="100%" stop-color="#4a3270"/>
     </radialGradient>
-    <radialGradient id="blushGrad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#e8927c" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#e8927c" stop-opacity="0" />
+    <radialGradient id="feyBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4a5b0" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#d4a5b0" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
-  <ellipse cx="15.5" cy="20" rx="7" ry="9" transform="rotate(-18 15.5 20)" fill="url(#furGrad)" />
-  <ellipse cx="48.5" cy="20" rx="7" ry="9" transform="rotate(18 48.5 20)" fill="url(#furGrad)" />
-  <ellipse cx="16" cy="22" rx="3" ry="4" transform="rotate(-18 16 22)" fill="#e8927c" opacity="0.35" />
-  <ellipse cx="48" cy="22" rx="3" ry="4" transform="rotate(18 48 22)" fill="#e8927c" opacity="0.35" />
+  <!-- Soft round backdrop for favicon clarity -->
+  <circle cx="32" cy="34" r="29" fill="#0b0b10" opacity="0.0"/>
 
-  <ellipse cx="32" cy="39" rx="25.5" ry="20.5" fill="url(#furGrad)" />
+  <!-- Ears -->
+  <ellipse cx="15.2" cy="19.5" rx="7.2" ry="9.2" transform="rotate(-16 15.2 19.5)" fill="url(#feyFur)"/>
+  <ellipse cx="48.8" cy="19.5" rx="7.2" ry="9.2" transform="rotate(16 48.8 19.5)" fill="url(#feyFur)"/>
+  <ellipse cx="15.8" cy="21.5" rx="3.1" ry="4.2" transform="rotate(-16 15.8 21.5)" fill="#d4a5b0" opacity="0.4"/>
+  <ellipse cx="48.2" cy="21.5" rx="3.1" ry="4.2" transform="rotate(16 48.2 21.5)" fill="#d4a5b0" opacity="0.4"/>
 
-  <ellipse cx="32" cy="27" rx="5" ry="11" fill="#ffffff" opacity="0.14" />
-  <ellipse cx="32" cy="45" rx="15" ry="11" fill="#ffffff" opacity="0.16" />
+  <!-- Face -->
+  <ellipse cx="32" cy="38.5" rx="25.8" ry="20.8" fill="url(#feyFur)"/>
+  <ellipse cx="32" cy="26.5" rx="5.2" ry="11" fill="#ffffff" opacity="0.12"/>
+  <ellipse cx="32" cy="45" rx="15.5" ry="11" fill="#ffffff" opacity="0.14"/>
+  <circle cx="13" cy="45" r="5" fill="url(#feyBlush)"/>
+  <circle cx="51" cy="45" r="5" fill="url(#feyBlush)"/>
 
-  <circle cx="13.5" cy="45" r="4.5" fill="url(#blushGrad)" />
-  <circle cx="50.5" cy="45" r="4.5" fill="url(#blushGrad)" />
+  <!-- Crown -->
+  <path d="M23.8 18.2 L26.8 8.2 L30 14.6 L32 5.5 L34 14.6 L37.2 8.2 L40.2 18.2 Z" fill="url(#feyGold)"/>
+  <ellipse cx="32" cy="11" rx="2.2" ry="2.8" fill="url(#feyGem)"/>
+  <circle cx="31.2" cy="9.9" r="0.55" fill="#fff" opacity="0.85"/>
+  <path d="M26.2 13L27.5 11L28.8 13L27.5 15Z" fill="url(#feyGem)"/>
+  <path d="M35.2 13L36.5 11L37.8 13L36.5 15Z" fill="url(#feyGem)"/>
 
-  <path d="M24 18.5 L26.8 9 L30 15 L32 6 L34 15 L37.2 9 L40 18.5 Z" fill="url(#goldGrad)" />
-  <ellipse cx="32" cy="11.5" rx="2.1" ry="2.7" fill="url(#gemGrad)" />
-  <circle cx="31.3" cy="10.4" r="0.55" fill="#fff" opacity="0.8" />
-  <path d="M26.3 13.2L27.5 11.4L28.7 13.2L27.5 15Z" fill="url(#gemGrad)" />
-  <path d="M35.3 13.2L36.5 11.4L37.7 13.2L36.5 15Z" fill="url(#gemGrad)" />
+  <!-- Eyes -->
+  <ellipse cx="21" cy="37.2" rx="6.8" ry="7.2" fill="url(#feyIris)"/>
+  <ellipse cx="43" cy="37.2" rx="6.8" ry="7.2" fill="url(#feyIris)"/>
+  <circle cx="21" cy="38.3" r="3.4" fill="#0b0b10"/>
+  <circle cx="43" cy="38.3" r="3.4" fill="#0b0b10"/>
+  <circle cx="19.1" cy="35.6" r="1.55" fill="#fff"/>
+  <circle cx="41.1" cy="35.6" r="1.55" fill="#fff"/>
+  <circle cx="23.1" cy="40" r="0.7" fill="#fff" opacity="0.55"/>
+  <circle cx="45.1" cy="40" r="0.7" fill="#fff" opacity="0.55"/>
+  <path d="M14.8 33.2C17.4 30.6 24.6 30.6 27.2 33.2" stroke="#4a4a52" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <path d="M36.8 33.2C39.4 30.6 46.6 30.6 49.2 33.2" stroke="#4a4a52" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.35"/>
 
-  <ellipse cx="21" cy="37.5" rx="6.5" ry="7" fill="url(#irisGrad)" />
-  <ellipse cx="43" cy="37.5" rx="6.5" ry="7" fill="url(#irisGrad)" />
-  <circle cx="21" cy="38.5" r="3.3" fill="#0a0a0f" />
-  <circle cx="43" cy="38.5" r="3.3" fill="#0a0a0f" />
-  <circle cx="19.2" cy="36" r="1.5" fill="#fff" />
-  <circle cx="41.2" cy="36" r="1.5" fill="#fff" />
-  <circle cx="23" cy="40" r="0.7" fill="#fff" opacity="0.5" />
-  <circle cx="45" cy="40" r="0.7" fill="#fff" opacity="0.5" />
-  <path d="M15 33.5C17.5 31 24.5 31 27 33.5" stroke="#4a4a52" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.4" />
-  <path d="M37 33.5C39.5 31 46.5 31 49 33.5" stroke="#4a4a52" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.4" />
+  <!-- Nose + mouth -->
+  <path d="M29.5 43.8Q32 42.3 34.5 43.8Q34 46.4 32 46.9Q30 46.4 29.5 43.8Z" fill="#c9a8b0"/>
+  <path d="M27 48.2C29 50.3 30.6 50.8 32 49.7C32.5 50.8 34 50.3 36 48.2" stroke="#7a766f" stroke-width="1.1" fill="none" stroke-linecap="round"/>
 
-  <path d="M29.6 44.2Q32 42.8 34.4 44.2Q33.9 46.6 32 47.1Q30.1 46.6 29.6 44.2Z" fill="#dba3a3" />
-
-  <path d="M27 48.5C29 50.5 30.5 51 32 50C32.5 51 34 50.5 36 48.5" stroke="#8a8680" stroke-width="1" fill="none" stroke-linecap="round" />
-
-  <line x1="3" y1="42" x2="16" y2="44" stroke="#8a8680" stroke-width="0.6" opacity="0.3" />
-  <line x1="3" y1="48" x2="16" y2="46" stroke="#8a8680" stroke-width="0.6" opacity="0.3" />
-  <line x1="48" y1="44" x2="61" y2="42" stroke="#8a8680" stroke-width="0.6" opacity="0.3" />
-  <line x1="48" y1="46" x2="61" y2="48" stroke="#8a8680" stroke-width="0.6" opacity="0.3" />
+  <!-- Whiskers -->
+  <line x1="2.5" y1="41.5" x2="15.5" y2="43.5" stroke="#9a968f" stroke-width="0.7" opacity="0.35"/>
+  <line x1="2.5" y1="47.5" x2="15.5" y2="45.5" stroke="#9a968f" stroke-width="0.7" opacity="0.35"/>
+  <line x1="48.5" y1="43.5" x2="61.5" y2="41.5" stroke="#9a968f" stroke-width="0.7" opacity="0.35"/>
+  <line x1="48.5" y1="45.5" x2="61.5" y2="47.5" stroke="#9a968f" stroke-width="0.7" opacity="0.35"/>
 </svg>

@@ -116,7 +116,7 @@ export function RabbitRoom({ media }: RabbitRoomProps) {
             )}
           </h3>
           <p className="mt-0.5 text-[11px] text-cream/30">
-            Reviews & discussion — in memory of Ghanima
+            Reviews & discussion · dedicated to Ghanima
           </p>
         </div>
 

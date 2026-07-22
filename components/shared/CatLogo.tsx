@@ -3,8 +3,7 @@
 import { useId } from "react";
 
 /**
- * Ghanima — Feyris' mascot logo.
- * A silver chinchilla doll-face Persian kitten, dedicated to a very good girl.
+ * Ghanima — Feyris mascot (silver doll-face Persian / chinchilla).
  */
 export function CatLogo({
   size = 32,
