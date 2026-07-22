@@ -10,9 +10,9 @@ export function MobileNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-[100] flex h-16 items-center justify-around border-t border-gold/[0.06] md:hidden"
+    <nav className="fixed bottom-0 left-0 right-0 z-[100] flex h-16 items-center justify-around border-t border-silver/10 md:hidden"
       style={{
-        background: "linear-gradient(180deg, rgba(14,14,20,0.98), rgba(10,10,14,1))",
+        background: "linear-gradient(180deg, rgba(18,18,20,0.98), rgba(12,12,14,1))",
         backdropFilter: "blur(20px)",
       }}
     >

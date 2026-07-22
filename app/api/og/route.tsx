@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
             width: 300,
             height: 300,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(200,164,78,0.12), transparent 60%)",
+            background: "radial-gradient(circle, rgba(197,194,188,0.12), transparent 60%)",
           }}
         />
 
@@ -52,14 +52,14 @@ export async function GET(req: NextRequest) {
               width: 28,
               height: 28,
               borderRadius: "50%",
-              background: "linear-gradient(135deg, #c8a44e, #a0832e)",
+              background: "linear-gradient(135deg, #c5c2bc, #8b8882)",
             }}
           />
           <div
             style={{
               fontSize: 18,
               fontWeight: 800,
-              color: "#c8a44e",
+              color: "#c5c2bc",
               letterSpacing: 3,
               textTransform: "uppercase" as const,
             }}
@@ -72,7 +72,7 @@ export async function GET(req: NextRequest) {
         <div
           style={{
             fontSize: 14,
-            color: "rgba(200,164,78,0.5)",
+            color: "rgba(197,194,188,0.5)",
             textTransform: "uppercase" as const,
             letterSpacing: 4,
             fontWeight: 700,
@@ -87,7 +87,7 @@ export async function GET(req: NextRequest) {
           style={{
             fontSize: 72,
             fontWeight: 900,
-            background: "linear-gradient(135deg, #c8a44e, #e0d2a0)",
+            background: "linear-gradient(135deg, #c5c2bc, #f0eeea)",
             backgroundClip: "text",
             color: "transparent",
             lineHeight: 1,
@@ -115,7 +115,7 @@ export async function GET(req: NextRequest) {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontSize: 28, fontWeight: 900, color: "#c8a44e" }}>
+            <div style={{ fontSize: 28, fontWeight: 900, color: "#c5c2bc" }}>
               {titles}
             </div>
             <div style={{ fontSize: 11, color: "rgba(240,235,224,0.35)" }}>

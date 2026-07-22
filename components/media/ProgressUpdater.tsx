@@ -81,13 +81,13 @@ export function ProgressUpdater({
           onClick={onFavoriteToggle}
           className="flex h-9 w-9 items-center justify-center rounded-lg border transition-colors"
           style={{
-            borderColor: isFavorite ? "rgba(200,164,78,0.3)" : "rgba(255,255,255,0.06)",
-            background: isFavorite ? "rgba(200,164,78,0.08)" : "transparent",
-            color: isFavorite ? "#c8a44e" : "rgba(240,235,224,0.3)",
+            borderColor: isFavorite ? "rgba(197,194,188,0.3)" : "rgba(255,255,255,0.06)",
+            background: isFavorite ? "rgba(197,194,188,0.08)" : "transparent",
+            color: isFavorite ? "#c5c2bc" : "rgba(240,235,224,0.3)",
           }}
           whileTap={{ scale: 0.9 }}
         >
-          <Heart size={14} fill={isFavorite ? "#c8a44e" : "none"} />
+          <Heart size={14} fill={isFavorite ? "#c5c2bc" : "none"} />
         </motion.button>
       </div>
 
@@ -107,7 +107,7 @@ export function ProgressUpdater({
             <motion.div
               className="h-full rounded-full"
               style={{
-                background: "linear-gradient(90deg, #c8a44e, #e8d5a0)",
+                background: "linear-gradient(90deg, #c5c2bc, #f0eeea)",
               }}
               initial={{ width: 0 }}
               animate={{ width: `${pct}%` }}
@@ -142,7 +142,7 @@ export function ProgressUpdater({
           onClick={() => onStatusChange?.("planning")}
           className="flex w-full items-center justify-center gap-2 rounded-lg py-2.5 text-[12px] font-bold text-fey-black"
           style={{
-            background: "linear-gradient(135deg, #c8a44e, #a0832e)",
+            background: "linear-gradient(135deg, #c5c2bc, #8b8882)",
           }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

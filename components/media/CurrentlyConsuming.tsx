@@ -131,7 +131,7 @@ export function CurrentlyConsuming({
           className="ml-1.5 h-px flex-1"
           style={{
             background:
-              "linear-gradient(90deg, rgba(200,164,78,0.12), transparent)",
+              "linear-gradient(90deg, rgba(197,194,188,0.12), transparent)",
           }}
         />
       </div>

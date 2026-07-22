@@ -38,7 +38,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
   const slides = [
     // Slide 0 — Welcome / Period intro
     <div key={0} className={slideBase} style={{ background: slideBg }}>
-      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 40%, rgba(200,164,78,0.1), transparent 50%)" }} />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 40%, rgba(197,194,188,0.1), transparent 50%)" }} />
       <div className="relative z-10">
         <Sparkles size={28} className="mx-auto mb-3 text-gold" />
         <div className="mb-2 text-[10px] font-bold uppercase tracking-[4px] text-gold/60">
@@ -55,7 +55,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
 
     // Slide 1 — Total Hours
     <div key={1} className={slideBase} style={{ background: slideBg }}>
-      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 30% 40%, rgba(200,164,78,0.07), transparent 60%)" }} />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 30% 40%, rgba(197,194,188,0.07), transparent 60%)" }} />
       <div className="relative z-10">
         <Timer size={22} className="mx-auto mb-2.5 text-gold" />
         <div className="mb-3.5 text-[10px] font-bold uppercase tracking-[3px] text-gold">
@@ -121,7 +121,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
 
     // Slide 3 — Top 5
     <div key={3} className={slideBase} style={{ background: slideBg }}>
-      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 60%, rgba(200,164,78,0.04), transparent 60%)" }} />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 60%, rgba(197,194,188,0.04), transparent 60%)" }} />
       <div className="relative z-10 w-full">
         <Flame size={22} className="mx-auto mb-2.5 text-gold" />
         <div className="mb-[22px] text-[10px] font-bold uppercase tracking-[3px] text-gold">
@@ -142,7 +142,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
               >
                 <span
                   className="min-w-[30px] text-right text-[20px] font-black"
-                  style={{ color: i === 0 ? "#c8a44e" : "rgba(224,218,206,0.12)" }}
+                  style={{ color: i === 0 ? "#c5c2bc" : "rgba(224,218,206,0.12)" }}
                 >
                   #{i + 1}
                 </span>
@@ -226,7 +226,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
 
     // Slide 7 — Best Month
     <div key={7} className={slideBase} style={{ background: slideBg }}>
-      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 40%, rgba(200,164,78,0.06), transparent 55%)" }} />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 40%, rgba(197,194,188,0.06), transparent 55%)" }} />
       <div className="relative z-10">
         <Calendar size={22} className="mx-auto mb-2.5 text-gold" />
         <div className="mb-3 text-[10px] font-bold uppercase tracking-[3px] text-gold">
@@ -273,7 +273,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
 
     // Slide 9 — Personality + Share
     <div key={9} className={slideBase} style={{ background: slideBg }}>
-      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 30%, rgba(200,164,78,0.07), transparent 50%)" }} />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 30%, rgba(197,194,188,0.07), transparent 50%)" }} />
       <div className="relative z-10">
         <Sparkles size={24} className="mx-auto mb-2.5 text-gold" />
         <div className="mb-1.5 text-[10px] font-bold uppercase tracking-[3px] text-cream/40">
@@ -297,7 +297,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
           <motion.button
             onClick={onShare}
             className="mt-5 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-[12px] font-bold text-fey-black"
-            style={{ background: "linear-gradient(135deg, #c8a44e, #a0832e)" }}
+            style={{ background: "linear-gradient(135deg, #c5c2bc, #8b8882)" }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -320,7 +320,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
             style={{
               width: i === step ? 22 : 4,
               height: 3,
-              background: i === step ? "#c8a44e" : "rgba(200,164,78,0.12)",
+              background: i === step ? "#c5c2bc" : "rgba(197,194,188,0.12)",
             }}
           />
         ))}
@@ -346,9 +346,9 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
           disabled={step === 0}
           className="flex items-center gap-1 rounded-[9px] border px-4 py-[9px] text-[11.5px] font-semibold transition-colors disabled:cursor-default"
           style={{
-            background: step === 0 ? "rgba(255,255,255,0.015)" : "rgba(200,164,78,0.05)",
-            borderColor: step === 0 ? "rgba(255,255,255,0.02)" : "rgba(200,164,78,0.1)",
-            color: step === 0 ? "rgba(224,218,206,0.12)" : "#c8a44e",
+            background: step === 0 ? "rgba(255,255,255,0.015)" : "rgba(197,194,188,0.05)",
+            borderColor: step === 0 ? "rgba(255,255,255,0.02)" : "rgba(197,194,188,0.1)",
+            color: step === 0 ? "rgba(224,218,206,0.12)" : "#c5c2bc",
           }}
           whileTap={{ scale: 0.95 }}
         >
@@ -359,7 +359,7 @@ export function WrappedSlideshow({ data, onShare }: WrappedSlideshowProps) {
           disabled={step === slides.length - 1}
           className="flex items-center gap-1 rounded-[9px] border-none px-4 py-[9px] text-[11.5px] font-bold transition-colors disabled:cursor-default"
           style={{
-            background: step === slides.length - 1 ? "rgba(255,255,255,0.015)" : "linear-gradient(135deg, #c8a44e, #a0832e)",
+            background: step === slides.length - 1 ? "rgba(255,255,255,0.015)" : "linear-gradient(135deg, #c5c2bc, #8b8882)",
             color: step === slides.length - 1 ? "rgba(224,218,206,0.12)" : "#0a0a0f",
           }}
           whileTap={{ scale: 0.95 }}

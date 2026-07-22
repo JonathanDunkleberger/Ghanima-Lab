@@ -173,7 +173,7 @@ export function MediaCard({ item, onClick }: MediaCardProps) {
             )}
             {item.rating != null && item.rating > 0 && (
               <span className="flex items-center gap-[2px] text-gold">
-                <Star size={9} fill="#c8a44e" />
+                <Star size={9} fill="#c5c2bc" />
                 <span className="font-bold">
                   {(item.rating / 10).toFixed(1)}
                 </span>

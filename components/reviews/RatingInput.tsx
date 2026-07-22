@@ -46,19 +46,19 @@ export function RatingInput({
               whileTap={{ scale: 0.85 }}
               className="transition-colors"
               style={{
-                color: filled ? "#c8a44e" : "rgba(240,235,224,0.1)",
+                color: filled ? "#c5c2bc" : "rgba(240,238,234,0.12)",
               }}
             >
               <Star
                 size={s.star}
-                fill={filled ? "#c8a44e" : "transparent"}
+                fill={filled ? "#c5c2bc" : "transparent"}
                 strokeWidth={filled ? 0 : 1}
               />
             </motion.button>
           );
         })}
         {showValue && value > 0 && (
-          <span className={`ml-1.5 font-bold text-gold ${s.text}`}>
+          <span className={`ml-1.5 font-bold text-silver ${s.text}`}>
             {value}/{max}
           </span>
         )}
@@ -67,7 +67,6 @@ export function RatingInput({
   );
 }
 
-// ─── Slider-based 10-point rating (alternative) ────────────────────────────
 interface RatingSliderProps {
   value: number;
   onChange: (value: number) => void;
@@ -82,7 +81,7 @@ export function RatingSlider({ value, onChange, label }: RatingSliderProps) {
           <label className="text-[11px] font-medium text-cream/40">
             {label}
           </label>
-          <span className="text-[12px] font-bold text-gold">
+          <span className="text-[12px] font-bold text-silver">
             {value > 0 ? `${value}/10` : "—"}
           </span>
         </div>
@@ -92,7 +91,7 @@ export function RatingSlider({ value, onChange, label }: RatingSliderProps) {
           <motion.div
             className="h-full rounded-full"
             style={{
-              background: "linear-gradient(90deg, #8a7235, #c8a44e, #e8d5a0)",
+              background: "linear-gradient(90deg, #6e6b66, #c5c2bc, #f0eeea)",
             }}
             animate={{ width: `${(value / 10) * 100}%` }}
             transition={{ duration: 0.2 }}
@@ -107,13 +106,12 @@ export function RatingSlider({ value, onChange, label }: RatingSliderProps) {
           onChange={(e) => onChange(parseInt(e.target.value))}
           className="absolute inset-0 w-full cursor-pointer opacity-0"
         />
-        {/* Tick marks */}
         <div className="mt-1 flex justify-between px-0.5">
           {Array.from({ length: 11 }).map((_, i) => (
             <span
               key={i}
               className="text-[7px] text-cream/15"
-              style={{ color: i <= value && value > 0 ? "#c8a44e" : undefined }}
+              style={{ color: i <= value && value > 0 ? "#c5c2bc" : undefined }}
             >
               {i}
             </span>

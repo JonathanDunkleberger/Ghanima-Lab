@@ -24,7 +24,7 @@ export function TasteRadar({ data }: TasteRadarProps) {
       <ResponsiveContainer width="100%" height={250}>
         <RadarChart data={data} cx="50%" cy="50%" outerRadius="70%">
           <PolarGrid
-            stroke="rgba(200,164,78,0.08)"
+            stroke="rgba(197,194,188,0.08)"
             gridType="polygon"
           />
           <PolarAngleAxis
@@ -39,8 +39,8 @@ export function TasteRadar({ data }: TasteRadarProps) {
           <Radar
             name="Taste"
             dataKey="value"
-            stroke="#c8a44e"
-            fill="#c8a44e"
+            stroke="#c5c2bc"
+            fill="#c5c2bc"
             fillOpacity={0.15}
             strokeWidth={2}
           />

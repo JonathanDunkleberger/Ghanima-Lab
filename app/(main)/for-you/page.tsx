@@ -19,7 +19,7 @@ import { MEDIA_TYPES, type MediaType } from "@/lib/constants";
 
 const TYPE_COLORS: Record<string, string> = {
   anime: "#7b9ec9",
-  game: "#c8a44e",
+  game: "#c5c2bc",
   book: "#a0c4a8",
   tv: "#c97b9e",
   film: "#d4a574",
@@ -242,7 +242,7 @@ export default function ForYouPage() {
             className="inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-[12px] font-bold text-fey-black disabled:opacity-40"
             style={{
               background:
-                "linear-gradient(135deg, #c8a44e, #a0832e)",
+                "linear-gradient(135deg, #c5c2bc, #8b8882)",
             }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
@@ -334,9 +334,9 @@ export default function ForYouPage() {
                     key={genre}
                     className="px-3 py-1 text-xs rounded-full border"
                     style={{
-                      background: "rgba(200,164,78,0.06)",
-                      color: "rgba(200,164,78,0.7)",
-                      borderColor: "rgba(200,164,78,0.1)",
+                      background: "rgba(197,194,188,0.06)",
+                      color: "rgba(197,194,188,0.7)",
+                      borderColor: "rgba(197,194,188,0.1)",
                     }}
                   >
                     {genre}

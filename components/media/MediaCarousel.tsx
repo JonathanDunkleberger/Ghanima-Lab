@@ -29,7 +29,7 @@ export function MediaCarousel({
   const [canRight, setCanRight] = useState(true);
   const [hovered, setHovered] = useState(false);
   const tc =
-    type && MEDIA_TYPES[type] ? MEDIA_TYPES[type].color : "#c8a44e";
+    type && MEDIA_TYPES[type] ? MEDIA_TYPES[type].color : "#c5c2bc";
 
   const checkScroll = useCallback(() => {
     const el = scrollRef.current;

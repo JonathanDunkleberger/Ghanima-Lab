@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="public/feyris-cat.svg" alt="Feyris mascot — Ghanima" width="72" />
+  <img src="public/feyris-cat.svg" alt="Ghanima" width="64" />
 </p>
 
-<h1 align="center">Feyris</h1>
+<h1 align="center">Ghanima</h1>
 
 <p align="center">
-  <strong>A unified media library for films, TV, anime, games, and books.</strong><br/>
+  <strong>A unified library for films, TV, anime, games, and books.</strong><br/>
   Discover across sources, collect what you love, get taste-aware recommendations,<br/>
   and discuss titles in the Rabbit Room.
 </p>
@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://feyrisrec.com">Live site</a>
   ·
-  <a href="#why-feyris">Why</a>
+  <a href="#why">Why</a>
   ·
   <a href="#product">Product</a>
   ·
@@ -27,20 +27,18 @@
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3FCF8E?logo=supabase&logoColor=white" alt="Supabase" />
   <img src="https://img.shields.io/badge/Clerk-Auth-6C47FF?logo=clerk&logoColor=white" alt="Clerk" />
-  <img src="https://img.shields.io/badge/License-MIT-c8a44e" alt="MIT" />
+  <img src="https://img.shields.io/badge/License-MIT-c5c2bc" alt="MIT" />
 </p>
 
 ---
 
-## Why Feyris
+## Why
 
-Most people don’t consume media in one silo. You finish a film, start the novel it was based on, then drop into a related game — but the tools you use to track taste are still fragmented (Letterboxd for film, MAL for anime, Goodreads for books, Steam for games).
+Most people don’t consume media in one silo. You finish a film, start the novel it was based on, then drop into a related game — but the tools for tracking taste stay fragmented.
 
-**Feyris** is a product experiment in *cross-medium continuity*: one library, one search surface, one recommendation loop, and room for conversation around each title.
+**Ghanima** is a product experiment in *cross-medium continuity*: one library, one search surface, one recommendation loop, and structured discussion around each title.
 
-It was built as a hands-on product & engineering project — scoping a real user problem, shipping an end-to-end web app, and iterating on discovery UX, identity, and community features.
-
-> **Brand note.** The name *Feyris* stays for now. The mascot is **Ghanima**, a silver doll-face Persian — a personal dedication that also anchors the product’s visual language (pearl, silver, soft blush, gold accents). Discussion lives in the **Rabbit Room**, inspired by the idea of a small literary circle rather than a drive-by comment box.
+Built as an end-to-end web product — scoping a real problem, shipping discovery UX, identity, collections, and community threads.
 
 ---
 
@@ -50,29 +48,29 @@ It was built as a hands-on product & engineering project — scoping a real user
 
 | Goal | How it shows up |
 |------|-----------------|
-| Reduce context-switching across media apps | Single search + unified `MediaItem` model |
+| Reduce context-switching across media apps | Single search + unified media model |
 | Make taste legible | Collection, ratings, Wrapped |
-| Recommend *across* mediums, not just within one | For You scoring + diversity weighting |
+| Recommend across mediums | For You scoring + diversity weighting |
 | Encourage thoughtful discourse | Rabbit Room nested threads (sign-in required) |
 
-### Core surfaces
+### Surfaces
 
 - **Home** — trending rails across film, TV, anime, games, and books  
 - **Collection** — favorites, watched / played / read, want-to lists  
-- **For You** — personalized recommendations from your library signals  
-- **Wrapped** — a year-in-review style snapshot of consumption  
-- **Rabbit Room** — per-title reviews & nested discussion (reviews are root posts)
+- **For You** — personalized recommendations from library signals  
+- **Wrapped** — year-in-review style snapshot  
+- **Rabbit Room** — per-title reviews & nested discussion  
 
 ### Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/01-homepage.png" alt="Feyris homepage with trending rails" width="100%" />
-  <br/><em>Homepage — unified discovery and trending rails</em>
+  <img src="docs/screenshots/01-homepage.png" alt="Homepage with trending rails" width="100%" />
+  <br/><em>Homepage — unified discovery</em>
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/02-media-detail.png" alt="Media detail panel with Rabbit Room" width="100%" />
-  <br/><em>Media detail — actions, ratings, and Rabbit Room</em>
+  <img src="docs/screenshots/02-media-detail.png" alt="Media detail with Rabbit Room" width="100%" />
+  <br/><em>Media detail — actions and Rabbit Room</em>
 </p>
 
 <p align="center">
@@ -81,8 +79,8 @@ It was built as a hands-on product & engineering project — scoping a real user
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/03-collection.png" alt="Collection page empty state" width="100%" />
-  <br/><em>Collection — favorites, watched, and watchlist in one place</em>
+  <img src="docs/screenshots/03-collection.png" alt="Collection page" width="100%" />
+  <br/><em>Collection — favorites, watched, watchlist</em>
 </p>
 
 ---
@@ -90,13 +88,13 @@ It was built as a hands-on product & engineering project — scoping a real user
 ## Architecture
 
 <p align="center">
-  <img src="docs/feyris-architecture.svg" alt="Feyris system architecture diagram" width="100%" />
+  <img src="docs/feyris-architecture.svg" alt="System architecture" width="100%" />
 </p>
 
 **Experience** — Discover, collect, recommend, discuss.  
-**Application** — Next.js App Router (TypeScript), Zustand + React Query on the client, Route Handlers as the API boundary, Clerk for auth.  
-**Services** — TMDB (film / TV / anime), IGDB via Twitch (games), Google Books, optional OpenAI embeddings for seeding.  
-**Data** — Supabase Postgres for profiles, library, activity, and Rabbit Room (`room_posts`, `room_post_votes`); localStorage for lightweight client lists.
+**Application** — Next.js App Router (TypeScript), Zustand + React Query, Route Handlers, Clerk auth.  
+**Services** — TMDB, IGDB / Twitch, Google Books; optional OpenAI for seeding.  
+**Data** — Supabase Postgres (profiles, library, Rabbit Room); localStorage for lightweight client lists.
 
 ---
 
@@ -120,7 +118,7 @@ It was built as a hands-on product & engineering project — scoping a real user
 ### Prerequisites
 
 - Node.js 18+
-- Accounts / keys for TMDB, Twitch (IGDB), Google Books, Supabase, and Clerk
+- API keys for TMDB, Twitch (IGDB), Google Books, Supabase, and Clerk
 
 ### Setup
 
@@ -131,7 +129,7 @@ npm install
 cp .env.local.example .env.local
 ```
 
-Fill in `.env.local` (see [Environment](#environment)), then:
+Fill in `.env.local`, then:
 
 ```bash
 npm run dev
@@ -141,7 +139,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ### Rabbit Room schema
 
-If you want discussion threads, run [`supabase/rabbit_room_schema.sql`](supabase/rabbit_room_schema.sql) once in the Supabase SQL Editor. That creates `profiles`, `room_posts`, and `room_post_votes`.
+Run [`supabase/rabbit_room_schema.sql`](supabase/rabbit_room_schema.sql) once in the Supabase SQL Editor to create `profiles`, `room_posts`, and `room_post_votes`.
 
 ---
 
@@ -152,74 +150,74 @@ If you want discussion threads, run [`supabase/rabbit_room_schema.sql`](supabase
 | Variable | Purpose |
 |----------|---------|
 | `TMDB_API_KEY` | Film, TV, anime |
-| `TWITCH_CLIENT_ID` / `TWITCH_CLIENT_SECRET` | IGDB games via Twitch |
+| `TWITCH_CLIENT_ID` / `TWITCH_CLIENT_SECRET` | IGDB games |
 | `GOOGLE_BOOKS_API_KEY` | Books |
 | `OPENAI_API_KEY` | Optional embeddings / seeding |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server writes (library, rooms) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server writes |
 | `CLERK_SECRET_KEY` | Auth |
 
 ### Client-side (public)
 
 | Variable | Purpose |
 |----------|---------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key |
 | `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk publishable key |
-| `NEXT_PUBLIC_DISCORD_INVITE_URL` | Optional community link |
+| `NEXT_PUBLIC_DISCORD_INVITE_URL` | Optional |
 
 ---
 
 ## Repository layout
 
 ```
-Feyris/
-├── app/                  # App Router pages + API route handlers
-├── components/           # UI (layout, media, room, reviews)
-├── hooks/                # Data hooks (library, rooms, media)
-├── lib/                  # API adapters, recommendations, Supabase
-├── stores/               # Zustand stores
-├── supabase/             # SQL schemas (Rabbit Room, etc.)
-├── docs/                 # Architecture diagram + screenshots
-├── public/               # Static assets (mascot SVG, icons)
-└── scripts/              # Utility / seed scripts
+Feyris/                   # repo name (legacy)
+├── app/                  # App Router + API routes
+├── components/           # UI
+├── hooks/                # Data hooks
+├── lib/                  # Adapters, recommendations, Supabase
+├── stores/               # Zustand
+├── supabase/             # SQL schemas
+├── docs/                 # Architecture + screenshots
+├── public/               # Static assets
+└── scripts/              # Utilities
 ```
 
 ---
 
 ## Roadmap
 
-Shipped in the current build:
+Shipped:
 
 - [x] Cross-source search and trending rails  
 - [x] Collection, ratings, For You, Wrapped  
 - [x] Clerk authentication  
 - [x] Rabbit Room (persisted nested discussion)  
-- [x] Ghanima brand system (mascot + silver palette)
+- [x] Silver visual system  
 
-Good next steps (product / PM backlog):
+Next:
 
-- [ ] Public profiles with real post history (`/u/[username]`)  
-- [ ] Standalone Rabbit Room index (browse active rooms across titles)  
-- [ ] Moderation / report flows for community posts  
-- [ ] Stronger recommendation evaluation (diversity metrics, A/B hooks)  
-- [ ] Import from Letterboxd / MAL / Goodreads  
-- [ ] Accessibility and performance pass (Lighthouse, keyboard paths)  
-- [ ] Optional rename / sub-branding for book-club style community features  
+- [ ] Public profiles with post history  
+- [ ] Standalone Rabbit Room index  
+- [ ] Moderation / report flows  
+- [ ] Recommendation evaluation hooks  
+- [ ] Imports (Letterboxd / MAL / Goodreads)  
+- [ ] Accessibility & performance pass  
+- [ ] Custom domain aligned to product name  
 
 ---
 
 ## Design principles
 
 1. **One composition for discovery** — Home should feel like a media universe, not a dashboard dump.  
-2. **Identity when it matters** — Browsing is open; discourse requires a real account.  
-3. **Cross-medium first** — A recommendation that only stays inside film is a missed product opportunity.  
-4. **Personal, not generic** — Visual language and Rabbit Room framing keep the product human.
+2. **Identity when it matters** — Browsing is open; discourse requires an account.  
+3. **Cross-medium first** — Recommendations should travel across formats.  
+4. **Quiet visual language** — Cool silver / pearl accents on charcoal; restraint over spectacle.
 
 ---
 
 ## Attribution
 
-- Film / TV / anime data via [TMDB](https://www.themoviedb.org/) (not endorsed or certified by TMDB)  
+- Film / TV / anime via [TMDB](https://www.themoviedb.org/) (not endorsed or certified by TMDB)  
 - Games via [IGDB](https://www.igdb.com/) / Twitch API  
 - Books via [Google Books](https://developers.google.com/books)  
 - Logos and trademarks belong to their respective owners  
@@ -233,5 +231,5 @@ MIT — see [`LICENSE`](LICENSE).
 ---
 
 <p align="center">
-  <sub>Built by Jonathan Dunkleberger · Portfolio / product case study · <a href="https://feyrisrec.com">feyrisrec.com</a></sub>
+  <sub>Jonathan Dunkleberger · Product case study · <a href="https://feyrisrec.com">feyrisrec.com</a></sub>
 </p>

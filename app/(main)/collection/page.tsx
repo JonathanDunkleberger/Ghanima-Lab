@@ -22,7 +22,7 @@ import { SignInButton, useUser } from "@clerk/nextjs";
 const LIST_TABS = [
   { key: "favorites", label: "Favorites", icon: Heart, color: "#f87171" },
   { key: "watched", label: "Watched", icon: Check, color: "#4ade80" },
-  { key: "watchlist", label: "Watchlist", icon: Clock, color: "#c8a44e" },
+  { key: "watchlist", label: "Watchlist", icon: Clock, color: "#c5c2bc" },
 ] as const;
 
 const MEDIA_FILTERS = [
@@ -189,11 +189,11 @@ export default function CollectionPage() {
               className="flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-all"
               style={{
                 background: isActive
-                  ? "rgba(200,164,78,0.1)"
+                  ? "rgba(197,194,188,0.1)"
                   : "rgba(255,255,255,0.02)",
-                color: isActive ? "#c8a44e" : "rgba(224,218,206,0.3)",
+                color: isActive ? "#c5c2bc" : "rgba(224,218,206,0.3)",
                 border: isActive
-                  ? "1px solid rgba(200,164,78,0.15)"
+                  ? "1px solid rgba(197,194,188,0.15)"
                   : "1px solid rgba(255,255,255,0.03)",
               }}
             >

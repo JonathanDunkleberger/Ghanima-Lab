@@ -9,11 +9,11 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Feyris — Your Universal Media Library",
-    template: "%s | Feyris",
+    default: "Ghanima — Cross-Media Library",
+    template: "%s | Ghanima",
   },
   description:
-    "Track anime, games, books, films, and TV in one place. Rate, review, and discover your next obsession.",
+    "Track films, TV, anime, games, and books in one place. Rate, collect, and discuss what you love.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x48" },
@@ -27,21 +27,21 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
-    siteName: "Feyris",
-    title: "Feyris — Your Universal Media Library",
+    siteName: "Ghanima",
+    title: "Ghanima — Cross-Media Library",
     description:
-      "Track anime, games, books, films, and TV in one place.",
+      "Track films, TV, anime, games, and books in one place.",
     images: [{ url: "/feyris-cat-512.png", width: 512, height: 512 }],
   },
   twitter: {
     card: "summary",
-    title: "Feyris — Your Universal Media Library",
+    title: "Ghanima — Cross-Media Library",
     description:
-      "Track anime, games, books, films, and TV in one place.",
+      "Track films, TV, anime, games, and books in one place.",
     images: ["/feyris-cat-512.png"],
   },
   other: {
-    "msapplication-TileColor": "#0a0a0f",
+    "msapplication-TileColor": "#0c0c0e",
     "msapplication-TileImage": "/feyris-cat-512.png",
   },
 };
@@ -56,9 +56,9 @@ export default function RootLayout({
       appearance={{
         baseTheme: dark,
         variables: {
-          colorPrimary: "#c8a44e",
-          colorBackground: "#0e0e14",
-          colorText: "#f0ebe0",
+          colorPrimary: "#c5c2bc",
+          colorBackground: "#121214",
+          colorText: "#f0eeea",
         },
       }}
     >

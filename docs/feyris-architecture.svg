@@ -1,127 +1,110 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 720" role="img" aria-labelledby="title desc">
-  <title id="title">Feyris system architecture</title>
-  <desc id="desc">Layered diagram of the Feyris product: experience, application, services, and data.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" role="img" aria-labelledby="title desc">
+  <title id="title">Ghanima system architecture</title>
+  <desc id="desc">Layered product architecture: experience, application, services, and data.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#101016"/>
-      <stop offset="100%" stop-color="#0b0b10"/>
-    </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#e8d5a0"/>
-      <stop offset="100%" stop-color="#c8a44e"/>
-    </linearGradient>
-    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#9a968f"/>
-      <stop offset="50%" stop-color="#ece9e4"/>
-      <stop offset="100%" stop-color="#c9a8b0"/>
+      <stop offset="0%" stop-color="#121214"/>
+      <stop offset="100%" stop-color="#0c0c0e"/>
     </linearGradient>
     <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#17171f"/>
-      <stop offset="100%" stop-color="#13131a"/>
+      <stop offset="0%" stop-color="#1a1a1d"/>
+      <stop offset="100%" stop-color="#151518"/>
     </linearGradient>
   </defs>
 
-  <rect width="1040" height="720" fill="url(#bg)"/>
+  <rect width="1100" height="760" fill="url(#bg)"/>
 
-  <!-- Header -->
-  <text x="520" y="48" text-anchor="middle" fill="url(#gold)" font-family="Segoe UI, system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="10">FEYRIS</text>
-  <text x="520" y="72" text-anchor="middle" fill="#8f8b83" font-family="Segoe UI, system-ui, sans-serif" font-size="11" letter-spacing="4">SYSTEM ARCHITECTURE</text>
-  <text x="520" y="92" text-anchor="middle" fill="#5e5b56" font-family="Segoe UI, system-ui, sans-serif" font-size="10">Unified cross-media discovery · feyrisrec.com</text>
+  <text x="550" y="48" text-anchor="middle" fill="#f0eeea" font-family="Segoe UI, system-ui, sans-serif" font-size="26" font-weight="600" letter-spacing="8">GHANIMA</text>
+  <text x="550" y="72" text-anchor="middle" fill="#8b8882" font-family="Segoe UI, system-ui, sans-serif" font-size="11" letter-spacing="3">SYSTEM ARCHITECTURE</text>
+  <text x="550" y="92" text-anchor="middle" fill="#5e5c58" font-family="Segoe UI, system-ui, sans-serif" font-size="10">Cross-media discovery · feyrisrec.com</text>
 
-  <!-- Layer labels -->
-  <text x="40" y="130" fill="#8f8b83" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="3">PRODUCT EXPERIENCE</text>
-  <line x1="40" y1="138" x2="1000" y2="138" stroke="#2a2a33" stroke-width="1"/>
+  <!-- EXPERIENCE -->
+  <text x="40" y="130" fill="#8b8882" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="3">PRODUCT EXPERIENCE</text>
+  <line x1="40" y1="138" x2="1060" y2="138" stroke="#2a2a2e" stroke-width="1"/>
 
-  <!-- Experience cards -->
   <g font-family="Segoe UI, system-ui, sans-serif">
-    <rect x="40" y="152" width="230" height="100" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="56" y="178" fill="#ebe8e3" font-size="14" font-weight="600">Discover</text>
-    <text x="56" y="198" fill="#8f8b83" font-size="11">Unified search across film,</text>
-    <text x="56" y="214" fill="#8f8b83" font-size="11">TV, anime, games &amp; books</text>
-    <text x="56" y="234" fill="#c8a44e" font-size="10">Home · trending rails</text>
+    <rect x="40" y="154" width="240" height="108" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="56" y="182" fill="#f0eeea" font-size="15" font-weight="600">Discover</text>
+    <text x="56" y="204" fill="#9a9791" font-size="12">Unified search across film,</text>
+    <text x="56" y="222" fill="#9a9791" font-size="12">TV, anime, games &amp; books</text>
+    <text x="56" y="244" fill="#c5c2bc" font-size="11">Home · trending rails</text>
 
-    <rect x="286" y="152" width="230" height="100" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="302" y="178" fill="#ebe8e3" font-size="14" font-weight="600">Collect</text>
-    <text x="302" y="198" fill="#8f8b83" font-size="11">Favorites, watched, and</text>
-    <text x="302" y="214" fill="#8f8b83" font-size="11">want-to lists in one place</text>
-    <text x="302" y="234" fill="#c8a44e" font-size="10">Collection · ratings</text>
+    <rect x="300" y="154" width="240" height="108" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="316" y="182" fill="#f0eeea" font-size="15" font-weight="600">Collect</text>
+    <text x="316" y="204" fill="#9a9791" font-size="12">Favorites, watched, and</text>
+    <text x="316" y="222" fill="#9a9791" font-size="12">want-to lists in one place</text>
+    <text x="316" y="244" fill="#c5c2bc" font-size="11">Collection · ratings</text>
 
-    <rect x="532" y="152" width="230" height="100" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="548" y="178" fill="#ebe8e3" font-size="14" font-weight="600">Recommend</text>
-    <text x="548" y="198" fill="#8f8b83" font-size="11">Taste-aware picks with</text>
-    <text x="548" y="214" fill="#8f8b83" font-size="11">cross-medium diversity</text>
-    <text x="548" y="234" fill="#c8a44e" font-size="10">For You · Wrapped</text>
+    <rect x="560" y="154" width="240" height="108" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="576" y="182" fill="#f0eeea" font-size="15" font-weight="600">Recommend</text>
+    <text x="576" y="204" fill="#9a9791" font-size="12">Taste-aware picks with</text>
+    <text x="576" y="222" fill="#9a9791" font-size="12">cross-medium diversity</text>
+    <text x="576" y="244" fill="#c5c2bc" font-size="11">For You · Wrapped</text>
 
-    <rect x="778" y="152" width="222" height="100" rx="10" fill="url(#card)" stroke="#3a3428"/>
-    <text x="794" y="178" fill="#ebe8e3" font-size="14" font-weight="600">Discuss</text>
-    <text x="794" y="198" fill="#8f8b83" font-size="11">Nested threads per title</text>
-    <text x="794" y="214" fill="#8f8b83" font-size="11">Reviews as root posts</text>
-    <text x="794" y="234" fill="#c8a44e" font-size="10">Rabbit Room</text>
+    <rect x="820" y="154" width="240" height="108" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="836" y="182" fill="#f0eeea" font-size="15" font-weight="600">Discuss</text>
+    <text x="836" y="204" fill="#9a9791" font-size="12">Nested threads per title</text>
+    <text x="836" y="222" fill="#9a9791" font-size="12">Reviews as root posts</text>
+    <text x="836" y="244" fill="#c5c2bc" font-size="11">Rabbit Room</text>
   </g>
 
-  <!-- Application layer -->
-  <text x="40" y="300" fill="#8f8b83" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="3">APPLICATION</text>
-  <line x1="40" y1="308" x2="1000" y2="308" stroke="#2a2a33" stroke-width="1"/>
+  <!-- APPLICATION -->
+  <text x="40" y="308" fill="#8b8882" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="3">APPLICATION</text>
+  <line x1="40" y1="316" x2="1060" y2="316" stroke="#2a2a2e" stroke-width="1"/>
 
   <g font-family="Segoe UI, system-ui, sans-serif">
-    <rect x="40" y="322" width="310" height="118" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="56" y="348" fill="#ebe8e3" font-size="14" font-weight="600">Next.js 16 · App Router</text>
-    <text x="56" y="368" fill="#8f8b83" font-size="11">TypeScript · React 18 · Tailwind</text>
-    <text x="56" y="388" fill="#8f8b83" font-size="11">Zustand + React Query</text>
-    <text x="56" y="408" fill="#8f8b83" font-size="11">Framer Motion · Vercel hosting</text>
-    <rect x="250" y="332" width="82" height="20" rx="10" fill="#c8a44e" opacity="0.12"/>
-    <text x="291" y="346" text-anchor="middle" fill="#c8a44e" font-size="10" font-weight="600">FRONTEND</text>
+    <rect x="40" y="332" width="330" height="120" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="56" y="360" fill="#f0eeea" font-size="15" font-weight="600">Next.js 16 · App Router</text>
+    <text x="56" y="384" fill="#9a9791" font-size="12">TypeScript · React 18 · Tailwind</text>
+    <text x="56" y="404" fill="#9a9791" font-size="12">Zustand + React Query</text>
+    <text x="56" y="424" fill="#9a9791" font-size="12">Framer Motion · Vercel</text>
 
-    <rect x="366" y="322" width="310" height="118" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="382" y="348" fill="#ebe8e3" font-size="14" font-weight="600">Route Handlers</text>
-    <text x="382" y="368" fill="#8f8b83" font-size="11">/api/search-all · /api/media</text>
-    <text x="382" y="388" fill="#8f8b83" font-size="11">/api/rooms · /api/library</text>
-    <text x="382" y="408" fill="#8f8b83" font-size="11">Server-side adapters + scoring</text>
-    <rect x="576" y="332" width="82" height="20" rx="10" fill="#c8a44e" opacity="0.12"/>
-    <text x="617" y="346" text-anchor="middle" fill="#c8a44e" font-size="10" font-weight="600">API</text>
+    <rect x="390" y="332" width="330" height="120" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="406" y="360" fill="#f0eeea" font-size="15" font-weight="600">Route Handlers</text>
+    <text x="406" y="384" fill="#9a9791" font-size="12">/api/search-all · /api/media</text>
+    <text x="406" y="404" fill="#9a9791" font-size="12">/api/rooms · /api/library</text>
+    <text x="406" y="424" fill="#9a9791" font-size="12">Adapters + scoring engine</text>
 
-    <rect x="692" y="322" width="308" height="118" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="708" y="348" fill="#ebe8e3" font-size="14" font-weight="600">Auth &amp; Identity</text>
-    <text x="708" y="368" fill="#8f8b83" font-size="11">Clerk sign-in / sign-up</text>
-    <text x="708" y="388" fill="#8f8b83" font-size="11">Profiles synced for Rabbit Room</text>
-    <text x="708" y="408" fill="#8f8b83" font-size="11">Signed-in posting &amp; votes</text>
-    <rect x="900" y="332" width="82" height="20" rx="10" fill="#c8a44e" opacity="0.12"/>
-    <text x="941" y="346" text-anchor="middle" fill="#c8a44e" font-size="10" font-weight="600">CLERK</text>
+    <rect x="740" y="332" width="320" height="120" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="756" y="360" fill="#f0eeea" font-size="15" font-weight="600">Auth &amp; Identity</text>
+    <text x="756" y="384" fill="#9a9791" font-size="12">Clerk sign-in / sign-up</text>
+    <text x="756" y="404" fill="#9a9791" font-size="12">Profiles for Rabbit Room</text>
+    <text x="756" y="424" fill="#9a9791" font-size="12">Signed-in posts &amp; votes</text>
   </g>
 
-  <!-- Services -->
-  <text x="40" y="484" fill="#8f8b83" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="3">EXTERNAL SERVICES</text>
-  <line x1="40" y1="492" x2="1000" y2="492" stroke="#2a2a33" stroke-width="1"/>
+  <!-- SERVICES -->
+  <text x="40" y="500" fill="#8b8882" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="3">EXTERNAL SERVICES</text>
+  <line x1="40" y1="508" x2="1060" y2="508" stroke="#2a2a2e" stroke-width="1"/>
 
   <g font-family="Segoe UI, system-ui, sans-serif">
-    <rect x="40" y="506" width="230" height="72" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="56" y="534" fill="#ebe8e3" font-size="13" font-weight="600">TMDB</text>
-    <text x="56" y="554" fill="#8f8b83" font-size="11">Films · TV · anime metadata</text>
+    <rect x="40" y="524" width="240" height="72" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="56" y="554" fill="#f0eeea" font-size="14" font-weight="600">TMDB</text>
+    <text x="56" y="576" fill="#9a9791" font-size="12">Films · TV · anime</text>
 
-    <rect x="286" y="506" width="230" height="72" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="302" y="534" fill="#ebe8e3" font-size="13" font-weight="600">IGDB / Twitch</text>
-    <text x="302" y="554" fill="#8f8b83" font-size="11">Games catalog &amp; covers</text>
+    <rect x="300" y="524" width="240" height="72" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="316" y="554" fill="#f0eeea" font-size="14" font-weight="600">IGDB / Twitch</text>
+    <text x="316" y="576" fill="#9a9791" font-size="12">Games catalog</text>
 
-    <rect x="532" y="506" width="230" height="72" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="548" y="534" fill="#ebe8e3" font-size="13" font-weight="600">Google Books</text>
-    <text x="548" y="554" fill="#8f8b83" font-size="11">Book metadata &amp; covers</text>
+    <rect x="560" y="524" width="240" height="72" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="576" y="554" fill="#f0eeea" font-size="14" font-weight="600">Google Books</text>
+    <text x="576" y="576" fill="#9a9791" font-size="12">Book metadata</text>
 
-    <rect x="778" y="506" width="222" height="72" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="794" y="534" fill="#ebe8e3" font-size="13" font-weight="600">OpenAI (optional)</text>
-    <text x="794" y="554" fill="#8f8b83" font-size="11">Embeddings / seeding</text>
+    <rect x="820" y="524" width="240" height="72" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="836" y="554" fill="#f0eeea" font-size="14" font-weight="600">OpenAI (optional)</text>
+    <text x="836" y="576" fill="#9a9791" font-size="12">Embeddings / seeding</text>
   </g>
 
-  <!-- Data -->
-  <text x="40" y="620" fill="#8f8b83" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="3">DATA</text>
-  <line x1="40" y1="628" x2="1000" y2="628" stroke="#2a2a33" stroke-width="1"/>
+  <!-- DATA -->
+  <text x="40" y="640" fill="#8b8882" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="3">DATA</text>
+  <line x1="40" y1="648" x2="1060" y2="648" stroke="#2a2a2e" stroke-width="1"/>
 
   <g font-family="Segoe UI, system-ui, sans-serif">
-    <rect x="40" y="642" width="480" height="52" rx="10" fill="url(#card)" stroke="#3a3428"/>
-    <text x="56" y="674" fill="#ebe8e3" font-size="13" font-weight="600">Supabase · PostgreSQL</text>
-    <text x="280" y="674" fill="#8f8b83" font-size="11">profiles · room_posts · room_post_votes · media · library</text>
+    <rect x="40" y="664" width="520" height="60" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="56" y="690" fill="#f0eeea" font-size="14" font-weight="600">Supabase · PostgreSQL</text>
+    <text x="56" y="710" fill="#9a9791" font-size="12">profiles · room_posts · votes · media · library</text>
 
-    <rect x="540" y="642" width="460" height="52" rx="10" fill="url(#card)" stroke="#2e2e38"/>
-    <text x="556" y="674" fill="#ebe8e3" font-size="13" font-weight="600">Client persistence</text>
-    <text x="720" y="674" fill="#8f8b83" font-size="11">localStorage for favorites / ratings / lists</text>
+    <rect x="580" y="664" width="480" height="60" rx="10" fill="url(#card)" stroke="#2e2e32"/>
+    <text x="596" y="690" fill="#f0eeea" font-size="14" font-weight="600">Client persistence</text>
+    <text x="596" y="710" fill="#9a9791" font-size="12">localStorage for favorites / ratings / lists</text>
   </g>
 </svg>

@@ -12,7 +12,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Legacy shadcn/ui variables
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         input: "hsl(var(--input))",
@@ -42,54 +41,61 @@ const config: Config = {
           foreground: "hsl(var(--destructive-foreground))",
         },
 
-        // ─── Feyris Design System (silver dollface Persian / chinchilla) ───
+        /**
+         * Silver chinchilla Persian palette
+         * — pure white undercoat, black tipping shimmer, cool charcoal ground,
+         *   brick-rose nose leather, soft blue-green eye accent (sparingly).
+         * `gold` is aliased to silver so existing class names keep working.
+         */
         fey: {
-          black: "#0b0b10",
-          surface: "#101016",
-          elevated: "#15151c",
-          hover: "#1a1a22",
+          black: "#0c0c0e",
+          surface: "#121214",
+          elevated: "#18181b",
+          hover: "#1f1f23",
         },
+        // Alias: historical "gold" classes now render as silver
         gold: {
-          DEFAULT: "#c8a44e",
-          light: "#e8d5a0",
-          dark: "#8a7235",
-          muted: "rgba(200,164,78,0.1)",
+          DEFAULT: "#c5c2bc",
+          light: "#f0eeea",
+          dark: "#8b8882",
+          muted: "rgba(197,194,188,0.12)",
         },
-        // Cool pearl — less warm cream, more chinchilla silver-white
-        cream: "#ebe8e3",
-        pearl: "#f4f2ef",
+        cream: "#f0eeea",
+        pearl: "#f7f6f4",
+        nose: {
+          DEFAULT: "#a66b6b",
+          soft: "rgba(166,107,107,0.16)",
+        },
         blush: {
-          DEFAULT: "#c9a8b0",
-          soft: "rgba(201,168,176,0.14)",
-          muted: "rgba(201,168,176,0.06)",
+          DEFAULT: "#a66b6b",
+          soft: "rgba(166,107,107,0.14)",
+          muted: "rgba(166,107,107,0.06)",
         },
-        royal: {
-          DEFAULT: "#6b4ba3",
-          light: "#9b7fd4",
-          dark: "#4a3270",
+        eye: {
+          DEFAULT: "#6f8f86",
+          light: "#9bb5ac",
         },
         silver: {
-          DEFAULT: "#c4c1bb",
-          light: "#ece9e4",
-          mid: "#9a968f",
-          dark: "#6e6b65",
-          mist: "rgba(196,193,187,0.08)",
+          DEFAULT: "#c5c2bc",
+          light: "#f0eeea",
+          mid: "#9a9791",
+          dark: "#6e6b66",
+          mist: "rgba(197,194,188,0.09)",
         },
-        // Media type colors
         type: {
-          anime: "#7b9ec9",
-          game: "#c8a44e",
-          book: "#a0c4a8",
-          tv: "#c97b9e",
-          film: "#d4a574",
-          manga: "#b088c9",
+          anime: "#8aa4bc",
+          game: "#a8a49c",
+          book: "#8f9e90",
+          tv: "#9a8a94",
+          film: "#a89a8c",
+          manga: "#958fa3",
         },
-        match: "#5cb85c",
+        match: "#6f8f86",
         border: {
           DEFAULT: "hsl(var(--border))",
           subtle: "rgba(255,255,255,0.04)",
           light: "rgba(255,255,255,0.08)",
-          gold: "rgba(200,164,78,0.15)",
+          gold: "rgba(197,194,188,0.16)",
         },
       },
       fontFamily: {

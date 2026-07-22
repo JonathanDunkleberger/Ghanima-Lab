@@ -328,11 +328,11 @@ export function MediaDetailPanel() {
                 </span>
               )}
               {userRating > 0 && (
-                <span className="flex items-center gap-1 text-[#c8a44e]">
-                  <span className="text-[10px] font-semibold uppercase text-[#c8a44e]/60">
-                    Feyris
+                <span className="flex items-center gap-1 text-[#c5c2bc]">
+                  <span className="text-[10px] font-semibold uppercase text-[#c5c2bc]/60">
+                    Ghanima
                   </span>
-                  <Star size={12} className="fill-[#c8a44e] text-[#c8a44e]" />
+                  <Star size={12} className="fill-[#c5c2bc] text-[#c5c2bc]" />
                   <span className="text-[14px] font-extrabold">
                     {userRating}
                   </span>
@@ -398,7 +398,7 @@ export function MediaDetailPanel() {
               {descriptionLong && (
                 <button
                   onClick={() => setShowFullDescription(!showFullDescription)}
-                  className="mt-1 text-[11px] font-semibold text-[#c8a44e]/60 hover:text-[#c8a44e] transition-colors"
+                  className="mt-1 text-[11px] font-semibold text-[#c5c2bc]/60 hover:text-[#c5c2bc] transition-colors"
                 >
                   {showFullDescription ? "Show less" : "Read more"}
                 </button>
@@ -453,13 +453,13 @@ export function MediaDetailPanel() {
               onClick={handleWatchlist}
               className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-[13px] font-semibold transition-all ${
                 onWatchlist
-                  ? "border border-[#c8a44e]/30 bg-[#c8a44e]/[0.12] text-[#c8a44e]"
+                  ? "border border-[#c5c2bc]/30 bg-[#c5c2bc]/[0.12] text-[#c5c2bc]"
                   : "border border-white/[0.06] bg-white/[0.04] text-[#f0ebe0]/60 hover:bg-white/[0.07]"
               }`}
             >
               <Clock
                 size={16}
-                className={onWatchlist ? "text-[#c8a44e]" : ""}
+                className={onWatchlist ? "text-[#c5c2bc]" : ""}
                 strokeWidth={1.5}
               />
               {onWatchlist
@@ -489,7 +489,7 @@ export function MediaDetailPanel() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="mt-2 overflow-hidden rounded-xl border border-[#c8a44e]/10 bg-[#c8a44e]/[0.03] p-4"
+                  className="mt-2 overflow-hidden rounded-xl border border-[#c5c2bc]/10 bg-[#c5c2bc]/[0.03] p-4"
                 >
                   <RatingSlider
                     value={userRating}

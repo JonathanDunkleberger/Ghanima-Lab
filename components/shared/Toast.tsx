@@ -31,7 +31,7 @@ const ICONS = {
 const COLORS = {
   success: "#5cb85c",
   error: "#d9534f",
-  info: "#c8a44e",
+  info: "#c5c2bc",
 };
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {

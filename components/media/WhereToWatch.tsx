@@ -16,7 +16,7 @@ interface WhereToWatchProps {
 
 const TYPE_CONFIG = {
   stream: { label: "Stream", icon: Tv, color: "#5cb85c" },
-  rent: { label: "Rent", icon: Download, color: "#c8a44e" },
+  rent: { label: "Rent", icon: Download, color: "#c5c2bc" },
   buy: { label: "Buy", icon: ShoppingCart, color: "#7b9ec9" },
 };
 

@@ -1,6 +1,6 @@
 export function ProgressBar({
   progress,
-  color = "#c8a44e",
+  color = "#c5c2bc",
   height = 3,
 }: {
   progress: number;

@@ -116,7 +116,7 @@ export function RabbitRoom({ media }: RabbitRoomProps) {
             )}
           </h3>
           <p className="mt-0.5 text-[11px] text-cream/30">
-            Reviews & discussion · dedicated to Ghanima
+            Reviews & nested discussion for this title
           </p>
         </div>
 
@@ -124,7 +124,7 @@ export function RabbitRoom({ media }: RabbitRoomProps) {
           <button
             type="button"
             onClick={() => setComposing((c) => !c)}
-            className="shrink-0 text-xs font-semibold text-gold hover:text-gold-light transition-colors"
+            className="shrink-0 text-xs font-semibold text-silver hover:text-pearl transition-colors"
           >
             {composing ? "Cancel" : "Write a Review"}
           </button>
@@ -192,7 +192,7 @@ export function RabbitRoom({ media }: RabbitRoomProps) {
                     type="button"
                     disabled={rating < 1 || createPost.isPending}
                     onClick={submitRoot}
-                    className="rounded-lg bg-gold px-4 py-1.5 text-xs font-bold text-fey-black transition-all hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="rounded-lg bg-silver-light px-4 py-1.5 text-xs font-bold text-fey-black transition-all hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed"
                   >
                     {createPost.isPending ? "Posting…" : "Post Review"}
                   </button>

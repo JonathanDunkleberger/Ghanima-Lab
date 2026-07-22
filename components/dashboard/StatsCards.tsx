@@ -20,7 +20,7 @@ const DEFAULT_STATS: StatCardData[] = [
     label: "Hours This Week",
     value: "—",
     icon: Timer,
-    color: "#c8a44e",
+    color: "#c5c2bc",
     sub: "Start tracking!",
   },
   {

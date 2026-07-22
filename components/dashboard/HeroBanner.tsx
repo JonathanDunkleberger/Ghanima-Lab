@@ -18,7 +18,7 @@ export function HeroBanner({ userName, activeCount = 0 }: HeroBannerProps) {
       }}
     >
       {/* Radial glows */}
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 75% 50%, rgba(200,164,78,0.08), transparent 60%)" }} />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 75% 50%, rgba(197,194,188,0.08), transparent 60%)" }} />
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 20% 80%, rgba(123,158,201,0.05), transparent 60%)" }} />
 
       {/* Content */}
@@ -39,7 +39,7 @@ export function HeroBanner({ userName, activeCount = 0 }: HeroBannerProps) {
             href="/"
             className="flex items-center gap-[5px] rounded-[9px] border-none px-[18px] py-[9px] text-[11.5px] font-bold text-fey-black transition-transform active:scale-[0.96]"
             style={{
-              background: "linear-gradient(135deg, #c8a44e, #a0832e)",
+              background: "linear-gradient(135deg, #c5c2bc, #8b8882)",
             }}
           >
             <Compass size={14} /> Discover New

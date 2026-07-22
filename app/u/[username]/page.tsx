@@ -8,10 +8,10 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { username } = await params;
   return {
-    title: `${username} — Feyris Profile`,
-    description: `Check out ${username}'s entertainment profile on Feyris.`,
+    title: `${username} — Ghanima Profile`,
+    description: `Check out ${username}'s entertainment profile on Ghanima.`,
     openGraph: {
-      title: `${username} on Feyris`,
+      title: `${username} on Ghanima`,
       description: `${username}'s entertainment library and stats.`,
     },
   };
@@ -35,7 +35,7 @@ const DEMO_TOP = [
 
 const TYPE_COLORS: Record<string, string> = {
   anime: "#7b9ec9",
-  game: "#c8a44e",
+  game: "#c5c2bc",
   book: "#a0c4a8",
   tv: "#c97b9e",
   film: "#d4a574",
@@ -52,16 +52,16 @@ export default async function PublicProfilePage({ params }: Props) {
       <header className="border-b border-white/[0.04] px-6 py-4">
         <div className="mx-auto flex max-w-3xl items-center justify-between">
           <a href="/" className="flex items-center gap-2">
-            <div className="h-5 w-5 rounded-full bg-gradient-to-br from-gold to-[#a0832e]" />
+            <div className="h-5 w-5 rounded-full bg-gradient-to-br from-gold to-[#8b8882]" />
             <span className="text-[10px] font-extrabold uppercase tracking-[3px] text-gold">
-              Feyris
+              Ghanima
             </span>
           </a>
           <a
             href="/"
             className="rounded-lg border border-gold/20 bg-gold/[0.05] px-3 py-1.5 text-[11px] font-semibold text-gold hover:bg-gold/[0.1]"
           >
-            Join Feyris
+            Join Ghanima
           </a>
         </div>
       </header>
@@ -75,7 +75,7 @@ export default async function PublicProfilePage({ params }: Props) {
           <div>
             <h1 className="text-2xl font-black text-cream">{username}</h1>
             <p className="text-[12px] text-cream/30">
-              Feyris member · &ldquo;The Worldbuilder&rdquo;
+              Ghanima member · &ldquo;The Worldbuilder&rdquo;
             </p>
           </div>
         </div>
@@ -117,7 +117,7 @@ export default async function PublicProfilePage({ params }: Props) {
                 className="min-w-[24px] text-right text-[18px] font-black"
                 style={{
                   color:
-                    i === 0 ? "#c8a44e" : "rgba(224,218,206,0.1)",
+                    i === 0 ? "#c5c2bc" : "rgba(224,218,206,0.1)",
                 }}
               >
                 #{i + 1}
@@ -138,7 +138,7 @@ export default async function PublicProfilePage({ params }: Props) {
                 </div>
               </div>
               <div className="flex items-center gap-1 text-[14px] font-bold text-gold">
-                {item.rating} <Star size={13} fill="#c8a44e" />
+                {item.rating} <Star size={13} fill="#c5c2bc" />
               </div>
             </div>
           ))}

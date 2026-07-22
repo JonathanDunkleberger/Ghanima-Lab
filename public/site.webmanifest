@@ -1,11 +1,11 @@
 {
-  "name": "Feyris",
-  "short_name": "Feyris",
-  "description": "Your Universal Media Library — track anime, games, books, films, and TV in one place.",
+  "name": "Ghanima",
+  "short_name": "Ghanima",
+  "description": "Cross-media library — films, TV, anime, games, and books in one place.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#c8a44e",
+  "background_color": "#0c0c0e",
+  "theme_color": "#c5c2bc",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

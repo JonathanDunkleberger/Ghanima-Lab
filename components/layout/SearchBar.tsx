@@ -70,8 +70,8 @@ export function SearchBar() {
         <div
           className={`flex items-center gap-2 rounded-lg border px-3 py-2 transition-all duration-200 ${
             focused
-              ? "border-gold/20 bg-fey-elevated shadow-[0_0_12px_rgba(200,164,78,0.06)]"
-              : "border-gold/[0.06] bg-fey-surface"
+              ? "border-silver/25 bg-fey-elevated shadow-[0_0_12px_rgba(197,194,188,0.06)]"
+              : "border-silver/10 bg-fey-surface"
           }`}
         >
           {isSearching ? (

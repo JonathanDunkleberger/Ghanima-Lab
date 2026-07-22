@@ -17,33 +17,30 @@ export function Sidebar() {
       style={{
         width: sidebarOpen ? 212 : 62,
         background:
-          "linear-gradient(180deg, rgba(16,16,22,0.99), rgba(11,11,16,1))",
+          "linear-gradient(180deg, rgba(18,18,20,0.99), rgba(12,12,14,1))",
       }}
     >
-      {/* Logo */}
       <Link
         href="/"
         className="flex items-center gap-2.5 px-3.5 py-4 mb-2"
       >
         <CatLogo size={sidebarOpen ? 30 : 26} />
         {sidebarOpen && (
-          <span className="text-[17px] font-black tracking-tight text-cream">
-            Feyris
+          <span className="text-[17px] font-black tracking-tight text-pearl">
+            Ghanima
           </span>
         )}
       </Link>
 
-      {/* Sidebar toggle — sits on the vertical mid-edge so it never collides with the logo */}
       <button
         onClick={toggleSidebar}
         className="absolute -right-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md border border-silver/15 text-cream/30 transition-colors hover:text-cream/60"
-        style={{ background: "rgba(16,16,22,0.99)" }}
+        style={{ background: "rgba(18,18,20,0.99)" }}
         aria-label="Toggle sidebar"
       >
         {sidebarOpen ? <PanelLeftClose size={13} /> : <PanelLeft size={13} />}
       </button>
 
-      {/* Nav items */}
       <div className="flex flex-1 flex-col gap-0.5 px-2">
         {sidebarOpen && (
           <div className="px-2.5 pb-1.5 text-[8.5px] font-bold uppercase tracking-[2px] text-cream/[0.17]">
@@ -65,15 +62,15 @@ export function Sidebar() {
               }`}
               style={{
                 background: isActive
-                  ? "rgba(200,164,78,0.07)"
+                  ? "rgba(197,194,188,0.1)"
                   : "transparent",
-                color: isActive ? "#c8a44e" : "rgba(224,218,206,0.35)",
+                color: isActive ? "#f0eeea" : "rgba(240,238,234,0.35)",
                 fontSize: 12.5,
                 fontWeight: isActive ? 700 : 500,
               }}
             >
               {isActive && (
-                <div className="absolute -left-2 top-1/2 h-4 w-[2.5px] -translate-y-1/2 rounded bg-gold" />
+                <div className="absolute -left-2 top-1/2 h-4 w-[2.5px] -translate-y-1/2 rounded bg-silver" />
               )}
               <Icon
                 size={17}

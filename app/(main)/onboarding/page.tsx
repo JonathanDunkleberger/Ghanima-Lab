@@ -93,7 +93,7 @@ export default function OnboardingPage() {
       <div className="mb-8 text-center">
         <CatLogo size={42} />
         <h1 className="mt-2 text-3xl font-black gradient-gold">
-          Welcome to Feyris
+          Welcome to Ghanima
         </h1>
         <p className="mt-1 text-[13px] text-cream/35">
           Let&apos;s set up your entertainment profile
@@ -111,7 +111,7 @@ export default function OnboardingPage() {
                   i < step
                     ? "linear-gradient(135deg, #5cb85c, #449d44)"
                     : i === step
-                    ? "linear-gradient(135deg, #c8a44e, #a0832e)"
+                    ? "linear-gradient(135deg, #c5c2bc, #8b8882)"
                     : "rgba(255,255,255,0.04)",
                 color: i <= step ? "#0a0a0f" : "rgba(224,218,206,0.3)",
               }}
@@ -287,10 +287,10 @@ export default function OnboardingPage() {
                         className="relative overflow-hidden rounded-lg border p-3 text-left transition-colors"
                         style={{
                           borderColor: fav
-                            ? config?.color || "#c8a44e"
+                            ? config?.color || "#c5c2bc"
                             : "rgba(255,255,255,0.04)",
                           background: fav
-                            ? config?.bg || "rgba(200,164,78,0.08)"
+                            ? config?.bg || "rgba(197,194,188,0.08)"
                             : "rgba(255,255,255,0.015)",
                         }}
                         whileHover={{ scale: 1.02 }}
@@ -301,7 +301,7 @@ export default function OnboardingPage() {
                             <Heart
                               size={12}
                               className="fill-current"
-                              style={{ color: config?.color || "#c8a44e" }}
+                              style={{ color: config?.color || "#c5c2bc" }}
                             />
                           </div>
                         )}
@@ -362,7 +362,7 @@ export default function OnboardingPage() {
               className="flex items-center gap-1 rounded-lg px-5 py-2 text-[12px] font-bold text-fey-black disabled:opacity-30"
               style={{
                 background: canProceed
-                  ? "linear-gradient(135deg, #c8a44e, #a0832e)"
+                  ? "linear-gradient(135deg, #c5c2bc, #8b8882)"
                   : "rgba(255,255,255,0.06)",
               }}
               whileTap={{ scale: 0.95 }}
@@ -374,7 +374,7 @@ export default function OnboardingPage() {
               onClick={handleFinish}
               className="flex items-center gap-1.5 rounded-lg px-6 py-2.5 text-[12px] font-bold text-fey-black"
               style={{
-                background: "linear-gradient(135deg, #c8a44e, #a0832e)",
+                background: "linear-gradient(135deg, #c5c2bc, #8b8882)",
               }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.95 }}

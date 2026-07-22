@@ -132,7 +132,7 @@ export default function WrappedPage() {
                 <motion.div
                   layoutId="period-pill"
                   className="absolute inset-0 rounded-md"
-                  style={{ background: "linear-gradient(135deg, #c8a44e, #a0832e)" }}
+                  style={{ background: "linear-gradient(135deg, #c5c2bc, #8b8882)" }}
                   transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                 />
               )}

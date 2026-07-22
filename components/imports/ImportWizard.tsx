@@ -119,16 +119,16 @@ export function ImportWizard({ onComplete, onClose }: ImportWizardProps) {
               <div
                 className="flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-bold"
                 style={{
-                  background: i <= step ? "rgba(200,164,78,0.15)" : "rgba(255,255,255,0.04)",
-                  color: i <= step ? "#c8a44e" : "rgba(240,235,224,0.25)",
-                  border: i === step ? "1px solid rgba(200,164,78,0.3)" : "1px solid transparent",
+                  background: i <= step ? "rgba(197,194,188,0.15)" : "rgba(255,255,255,0.04)",
+                  color: i <= step ? "#c5c2bc" : "rgba(240,235,224,0.25)",
+                  border: i === step ? "1px solid rgba(197,194,188,0.3)" : "1px solid transparent",
                 }}
               >
                 {i < step ? <Check size={10} /> : i + 1}
               </div>
               <span
                 className="text-[10.5px] font-medium"
-                style={{ color: i <= step ? "#c8a44e" : "rgba(240,235,224,0.2)" }}
+                style={{ color: i <= step ? "#c5c2bc" : "rgba(240,235,224,0.2)" }}
               >
                 {label}
               </span>
@@ -137,7 +137,7 @@ export function ImportWizard({ onComplete, onClose }: ImportWizardProps) {
               <div
                 className="mx-3 h-px w-8"
                 style={{
-                  background: i < step ? "rgba(200,164,78,0.3)" : "rgba(255,255,255,0.04)",
+                  background: i < step ? "rgba(197,194,188,0.3)" : "rgba(255,255,255,0.04)",
                 }}
               />
             )}
@@ -214,8 +214,8 @@ export function ImportWizard({ onComplete, onClose }: ImportWizardProps) {
                     <div
                       className="flex h-4 w-4 items-center justify-center rounded border"
                       style={{
-                        borderColor: item.confirmed ? "#c8a44e" : "rgba(255,255,255,0.08)",
-                        background: item.confirmed ? "rgba(200,164,78,0.15)" : "transparent",
+                        borderColor: item.confirmed ? "#c5c2bc" : "rgba(255,255,255,0.08)",
+                        background: item.confirmed ? "rgba(197,194,188,0.15)" : "transparent",
                       }}
                     >
                       {item.confirmed && <Check size={9} className="text-gold" />}
@@ -257,7 +257,7 @@ export function ImportWizard({ onComplete, onClose }: ImportWizardProps) {
             onClick={() => setStep(step + 1)}
             disabled={step === 0 && !platform}
             className="flex items-center gap-1 rounded-lg px-4 py-2 text-[12px] font-bold text-fey-black disabled:opacity-40"
-            style={{ background: "linear-gradient(135deg, #c8a44e, #a0832e)" }}
+            style={{ background: "linear-gradient(135deg, #c5c2bc, #8b8882)" }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -268,7 +268,7 @@ export function ImportWizard({ onComplete, onClose }: ImportWizardProps) {
             onClick={handleConfirm}
             disabled={confirmedCount === 0}
             className="flex items-center gap-1 rounded-lg px-4 py-2 text-[12px] font-bold text-fey-black disabled:opacity-40"
-            style={{ background: "linear-gradient(135deg, #c8a44e, #a0832e)" }}
+            style={{ background: "linear-gradient(135deg, #c5c2bc, #8b8882)" }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >

@@ -1,6 +1,6 @@
 export function GenreChip({
   genre,
-  color = "#c8a44e",
+  color = "#c5c2bc",
 }: {
   genre: string;
   color?: string;

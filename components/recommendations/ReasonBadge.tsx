@@ -8,7 +8,7 @@ interface ReasonBadgeProps {
 }
 
 const TYPE_COLORS = {
-  taste: "#c8a44e",
+  taste: "#c5c2bc",
   genre: "#7b9ec9",
   cross_medium: "#b088c9",
   trending: "#d4a574",
@@ -24,7 +24,7 @@ const TYPE_LABELS = {
 };
 
 export function ReasonBadge({ reason, reasonType }: ReasonBadgeProps) {
-  const color = TYPE_COLORS[reasonType] || "#c8a44e";
+  const color = TYPE_COLORS[reasonType] || "#c5c2bc";
 
   return (
     <motion.div

@@ -9,16 +9,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // slug format: userId-period e.g. "abc123-2025"
   const ogUrl = `/api/og?title=Wrapped&hours=847&titles=42&personality=The%20Worldbuilder&period=2025`;
   return {
-    title: `Feyris Wrapped — ${slug}`,
-    description: "Check out my entertainment year in review on Feyris.",
+    title: `Ghanima Wrapped — ${slug}`,
+    description: "Check out my entertainment year in review on Ghanima.",
     openGraph: {
-      title: `Feyris Wrapped`,
+      title: `Ghanima Wrapped`,
       description: "My year in entertainment, summarized.",
       images: [{ url: ogUrl, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `Feyris Wrapped`,
+      title: `Ghanima Wrapped`,
       description: "My year in entertainment, summarized.",
       images: [ogUrl],
     },
@@ -36,16 +36,16 @@ export default async function PublicWrappedPage({ params }: Props) {
         className="pointer-events-none fixed inset-0"
         style={{
           background:
-            "radial-gradient(circle at 50% 40%, rgba(200,164,78,0.06), transparent 50%)",
+            "radial-gradient(circle at 50% 40%, rgba(197,194,188,0.06), transparent 50%)",
         }}
       />
 
       <div className="relative z-10 mx-auto max-w-[500px] text-center">
         {/* Logo */}
         <div className="mb-4 flex items-center justify-center gap-2">
-          <div className="h-6 w-6 rounded-full bg-gradient-to-br from-gold to-[#a0832e]" />
+          <div className="h-6 w-6 rounded-full bg-gradient-to-br from-gold to-[#8b8882]" />
           <span className="text-[11px] font-extrabold uppercase tracking-[4px] text-gold">
-            Feyris
+            Ghanima
           </span>
         </div>
 
@@ -54,7 +54,7 @@ export default async function PublicWrappedPage({ params }: Props) {
           Wrapped
         </h1>
         <p className="mb-8 text-[13px] text-cream/30">
-          Shared by a Feyris user · <span className="text-cream/40">{slug}</span>
+          Shared by a Ghanima user · <span className="text-cream/40">{slug}</span>
         </p>
 
         {/* Wrapped preview card */}
@@ -86,10 +86,10 @@ export default async function PublicWrappedPage({ params }: Props) {
           href="/"
           className="mt-6 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-[12px] font-bold text-fey-black"
           style={{
-            background: "linear-gradient(135deg, #c8a44e, #a0832e)",
+            background: "linear-gradient(135deg, #c5c2bc, #8b8882)",
           }}
         >
-          Create Your Own on Feyris
+          Create Your Own on Ghanima
         </a>
       </div>
     </div>

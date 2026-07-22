@@ -41,7 +41,7 @@ const HOURS_BY_TYPE = [
 
 const COMPLETION_FUNNEL = [
   { status: "Planning", count: 45, color: "#7b9ec9" },
-  { status: "In Progress", count: 12, color: "#c8a44e" },
+  { status: "In Progress", count: 12, color: "#c5c2bc" },
   { status: "On Hold", count: 8, color: "#c97b9e" },
   { status: "Completed", count: 42, color: "#5cb85c" },
   { status: "Dropped", count: 5, color: "#d4a574" },
@@ -103,7 +103,7 @@ const COMPLETION_TIME = [
 
 const TYPE_COLORS: Record<string, string> = {
   anime: "#7b9ec9",
-  game: "#c8a44e",
+  game: "#c5c2bc",
   book: "#a0c4a8",
   tv: "#c97b9e",
   film: "#d4a574",
@@ -164,7 +164,7 @@ function DailyHeatmap() {
                     background:
                       h === 0
                         ? "rgba(255,255,255,0.02)"
-                        : `rgba(200,164,78,${0.15 + intensity * 0.75})`,
+                        : `rgba(197,194,188,${0.15 + intensity * 0.75})`,
                   }}
                   title={`${h}h`}
                 />
@@ -180,7 +180,7 @@ function DailyHeatmap() {
 // ─── Summary Stats ──────────────────────────────────────────────────────
 
 const SUMMARY = [
-  { label: "Total Hours", value: "847", icon: Clock, color: "#c8a44e" },
+  { label: "Total Hours", value: "847", icon: Clock, color: "#c5c2bc" },
   { label: "Titles Completed", value: "42", icon: Target, color: "#5cb85c" },
   { label: "Avg Rating", value: "8.3", icon: Star, color: "#d4a574" },
   { label: "Genres Explored", value: "14", icon: Layers, color: "#7b9ec9" },
@@ -324,7 +324,7 @@ export default function AnalyticsPage() {
                 {RATING_DIST.map((_, i) => (
                   <Cell
                     key={i}
-                    fill={`rgba(200,164,78,${0.3 + (i / 10) * 0.7})`}
+                    fill={`rgba(197,194,188,${0.3 + (i / 10) * 0.7})`}
                   />
                 ))}
               </Bar>
@@ -347,8 +347,8 @@ export default function AnalyticsPage() {
               />
               <Radar
                 dataKey="value"
-                stroke="#c8a44e"
-                fill="#c8a44e"
+                stroke="#c5c2bc"
+                fill="#c5c2bc"
                 fillOpacity={0.2}
               />
             </RadarChart>
@@ -403,7 +403,7 @@ export default function AnalyticsPage() {
               <div
                 key={o}
                 className="h-[10px] w-[10px] rounded-[2px]"
-                style={{ background: `rgba(200,164,78,${o})` }}
+                style={{ background: `rgba(197,194,188,${o})` }}
               />
             ))}
             <span>More</span>
@@ -444,7 +444,7 @@ export default function AnalyticsPage() {
                 {COMPLETION_TIME.map((entry) => (
                   <Cell
                     key={entry.type}
-                    fill={TYPE_COLORS[entry.type.toLowerCase()] || "#c8a44e"}
+                    fill={TYPE_COLORS[entry.type.toLowerCase()] || "#c5c2bc"}
                     fillOpacity={0.7}
                   />
                 ))}

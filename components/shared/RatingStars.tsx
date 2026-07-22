@@ -46,7 +46,7 @@ export function RatingStars({
           >
             <Star
               size={size}
-              fill={filled || half ? "#c8a44e" : "transparent"}
+              fill={filled || half ? "#c5c2bc" : "transparent"}
               className={
                 filled || half ? "text-gold" : "text-white/10"
               }
