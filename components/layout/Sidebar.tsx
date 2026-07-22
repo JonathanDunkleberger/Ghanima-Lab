@@ -2,22 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogOut, ChevronLeft } from "lucide-react";
-import { useUser, useClerk } from "@clerk/nextjs";
+import { PanelLeftClose, PanelLeft } from "lucide-react";
 import { CatLogo } from "@/components/shared/CatLogo";
 import { NAV_ITEMS } from "@/lib/constants";
 import { useAppStore } from "@/stores/app-store";
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { user } = useUser();
-  const { signOut } = useClerk();
   const { sidebarOpen, toggleSidebar } = useAppStore();
-
-  const initials =
-    user?.firstName && user?.lastName
-      ? `${user.firstName[0]}${user.lastName[0]}`
-      : user?.username?.slice(0, 2)?.toUpperCase() || "FY";
 
   return (
     <nav
@@ -41,13 +33,14 @@ export function Sidebar() {
         )}
       </Link>
 
-      {/* Sidebar toggle */}
+      {/* Sidebar toggle — sits on the vertical mid-edge so it never collides with the logo */}
       <button
         onClick={toggleSidebar}
-        className="absolute right-2 top-4 flex h-6 w-6 items-center justify-center rounded text-cream/20 hover:text-cream/40 transition-colors"
+        className="absolute -right-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md border border-gold/[0.08] text-cream/30 transition-colors hover:text-cream/60"
+        style={{ background: "rgba(14,14,20,0.99)" }}
         aria-label="Toggle sidebar"
       >
-        <ChevronLeft size={14} className={`transition-transform ${sidebarOpen ? "" : "rotate-180"}`} />
+        {sidebarOpen ? <PanelLeftClose size={13} /> : <PanelLeft size={13} />}
       </button>
 
       {/* Nav items */}
@@ -91,43 +84,6 @@ export function Sidebar() {
           );
         })}
       </div>
-
-      {/* User card */}
-      {sidebarOpen && (
-        <div className="mx-2 mb-4 rounded-[9px] border border-gold/[0.04] bg-gold/[0.02] p-3">
-          {user ? (
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-gold to-gold-dark text-[10.5px] font-extrabold text-fey-black">
-                {initials}
-              </div>
-              <div className="flex-1">
-                <div className="text-[11.5px] font-bold text-cream">
-                  {user.fullName || user.username || "User"}
-                </div>
-                <div className="text-[9.5px] text-cream/25">
-                  Media Enthusiast
-                </div>
-              </div>
-              <button
-                onClick={() => signOut()}
-                className="text-cream/15 hover:text-cream/40 transition-colors"
-              >
-                <LogOut size={13} />
-              </button>
-            </div>
-          ) : (
-            <Link
-              href="/sign-in"
-              className="flex items-center gap-2.5 text-[11.5px] font-bold text-gold hover:text-gold-light transition-colors"
-            >
-              <div className="flex h-7 w-7 items-center justify-center rounded-full border border-gold/20 bg-gold/[0.06]">
-                <LogOut size={12} className="rotate-180 text-gold" />
-              </div>
-              <span>Sign In</span>
-            </Link>
-          )}
-        </div>
-      )}
     </nav>
   );
 }

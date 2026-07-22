@@ -35,18 +35,23 @@ async function igdbFetch(endpoint: string, body: string) {
     },
     body,
   });
-  if (!res.ok) return [];
+  if (!res.ok) {
+    const errText = await res.text().catch(() => "");
+    console.error(`IGDB request failed (${res.status}) for ${endpoint}:`, errText);
+    return [];
+  }
   return res.json();
 }
 
 export async function searchGames(query: string) {
+  // NOTE: IGDB rejects (406) any query combining `search` with `sort` —
+  // search results are already ranked by relevance, so no `sort` clause here.
   return igdbFetch(
     "/games",
     `search "${query}";
      fields name,cover.url,first_release_date,genres.name,
             platforms.name,rating,total_rating,summary,videos.*,screenshots.url,
             involved_companies.company.name,involved_companies.developer;
-     sort total_rating desc;
      limit 20;`
   );
 }

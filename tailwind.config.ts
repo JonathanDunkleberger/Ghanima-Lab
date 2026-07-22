@@ -56,6 +56,16 @@ const config: Config = {
           muted: "rgba(200,164,78,0.1)",
         },
         cream: "#f0ebe0",
+        royal: {
+          DEFAULT: "#6b4ba3",
+          light: "#9b7fd4",
+          dark: "#4a3270",
+        },
+        silver: {
+          DEFAULT: "#c9c6c0",
+          light: "#f0ede6",
+          dark: "#8f8b83",
+        },
         // Media type colors
         type: {
           anime: "#7b9ec9",

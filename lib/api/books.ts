@@ -12,7 +12,11 @@ export async function searchBooks(query: string) {
   const res = await fetch(`${GOOGLE_BOOKS_BASE}/volumes?${params}`, {
     next: { revalidate: 300 },
   });
-  if (!res.ok) return [];
+  if (!res.ok) {
+    const errText = await res.text().catch(() => "");
+    console.error(`Google Books search failed (${res.status}):`, errText);
+    return [];
+  }
   const data = await res.json();
   return data.items || [];
 }
@@ -26,7 +30,11 @@ export async function getBookDetails(volumeId: string) {
     `${GOOGLE_BOOKS_BASE}/volumes/${volumeId}?${params}`,
     { next: { revalidate: 86400 } }
   );
-  if (!res.ok) return null;
+  if (!res.ok) {
+    const errText = await res.text().catch(() => "");
+    console.error(`Google Books details failed (${res.status}):`, errText);
+    return null;
+  }
   return res.json();
 }
 
@@ -63,7 +71,11 @@ export async function browseBooks(
   const res = await fetch(`${GOOGLE_BOOKS_BASE}/volumes?${params}`, {
     next: { revalidate: 3600 },
   });
-  if (!res.ok) return [];
+  if (!res.ok) {
+    const errText = await res.text().catch(() => "");
+    console.error(`Google Books browse failed (${res.status}):`, errText);
+    return [];
+  }
   const data = await res.json();
   return data.items || [];
 }
