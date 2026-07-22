@@ -26,8 +26,8 @@ export function TopBar() {
       `}</style>
       <div className="flex items-center gap-2 md:hidden">
         <CatLogo size={24} />
-        <span className="text-base font-black tracking-tight gradient-silver">
-          Ghanima
+        <span className="text-[15px] font-black tracking-tight gradient-silver">
+          Ghanima&apos;s Lab
         </span>
       </div>
       <div className="hidden md:block" />

@@ -1,6 +1,6 @@
 {
-  "name": "Ghanima",
-  "short_name": "Ghanima",
+  "name": "Ghanima's Lab",
+  "short_name": "Ghanima Lab",
   "description": "Cross-media library — films, TV, anime, games, and books in one place.",
   "start_url": "/",
   "display": "standalone",

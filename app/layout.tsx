@@ -9,8 +9,8 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Ghanima — Cross-Media Library",
-    template: "%s | Ghanima",
+    default: "Ghanima's Lab — Cross-Media Library",
+    template: "%s | Ghanima's Lab",
   },
   description:
     "Track films, TV, anime, games, and books in one place. Rate, collect, and discuss what you love.",
@@ -27,15 +27,15 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
-    siteName: "Ghanima",
-    title: "Ghanima — Cross-Media Library",
+    siteName: "Ghanima's Lab",
+    title: "Ghanima's Lab — Cross-Media Library",
     description:
       "Track films, TV, anime, games, and books in one place.",
     images: [{ url: "/feyris-cat-512.png", width: 512, height: 512 }],
   },
   twitter: {
     card: "summary",
-    title: "Ghanima — Cross-Media Library",
+    title: "Ghanima's Lab — Cross-Media Library",
     description:
       "Track films, TV, anime, games, and books in one place.",
     images: ["/feyris-cat-512.png"],

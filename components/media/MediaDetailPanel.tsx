@@ -330,7 +330,7 @@ export function MediaDetailPanel() {
               {userRating > 0 && (
                 <span className="flex items-center gap-1 text-[#c5c2bc]">
                   <span className="text-[10px] font-semibold uppercase text-[#c5c2bc]/60">
-                    Ghanima
+                    Yours
                   </span>
                   <Star size={12} className="fill-[#c5c2bc] text-[#c5c2bc]" />
                   <span className="text-[14px] font-extrabold">

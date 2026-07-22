@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/feyris-cat.svg" alt="Ghanima" width="64" />
+  <img src="public/feyris-cat.svg" alt="Ghanima's Lab" width="64" />
 </p>
 
-<h1 align="center">Ghanima</h1>
+<h1 align="center">Ghanima's Lab</h1>
 
 <p align="center">
   <strong>A unified library for films, TV, anime, games, and books.</strong><br/>
@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://feyrisrec.com">Live site</a>
+  <a href="https://ghanimaslab.com">Live site</a>
   ·
   <a href="#why">Why</a>
   ·
@@ -36,7 +36,7 @@
 
 Most people don’t consume media in one silo. You finish a film, start the novel it was based on, then drop into a related game — but the tools for tracking taste stay fragmented.
 
-**Ghanima** is a product experiment in *cross-medium continuity*: one library, one search surface, one recommendation loop, and structured discussion around each title.
+**Ghanima's Lab** is a product experiment in *cross-medium continuity*: one library, one search surface, one recommendation loop, and structured discussion around each title.
 
 Built as an end-to-end web product — scoping a real problem, shipping discovery UX, identity, collections, and community threads.
 
@@ -231,5 +231,5 @@ MIT — see [`LICENSE`](LICENSE).
 ---
 
 <p align="center">
-  <sub>Jonathan Dunkleberger · Product case study · <a href="https://feyrisrec.com">feyrisrec.com</a></sub>
+  <sub>Jonathan Dunkleberger · Product case study · <a href="https://ghanimaslab.com">ghanimaslab.com</a></sub>
 </p>

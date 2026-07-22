@@ -26,8 +26,8 @@ export function Sidebar() {
       >
         <CatLogo size={sidebarOpen ? 30 : 26} />
         {sidebarOpen && (
-          <span className="text-[17px] font-black tracking-tight text-pearl">
-            Ghanima
+          <span className="text-[15px] font-black tracking-tight text-pearl leading-tight">
+            Ghanima&apos;s Lab
           </span>
         )}
       </Link>

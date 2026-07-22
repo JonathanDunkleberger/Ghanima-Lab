@@ -8,10 +8,10 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { username } = await params;
   return {
-    title: `${username} — Ghanima Profile`,
-    description: `Check out ${username}'s entertainment profile on Ghanima.`,
+    title: `${username} — Ghanima's Lab Profile`,
+    description: `Check out ${username}'s entertainment profile on Ghanima's Lab.`,
     openGraph: {
-      title: `${username} on Ghanima`,
+      title: `${username} on Ghanima's Lab`,
       description: `${username}'s entertainment library and stats.`,
     },
   };
@@ -54,14 +54,14 @@ export default async function PublicProfilePage({ params }: Props) {
           <a href="/" className="flex items-center gap-2">
             <div className="h-5 w-5 rounded-full bg-gradient-to-br from-gold to-[#8b8882]" />
             <span className="text-[10px] font-extrabold uppercase tracking-[3px] text-gold">
-              Ghanima
+              Ghanima's Lab
             </span>
           </a>
           <a
             href="/"
             className="rounded-lg border border-gold/20 bg-gold/[0.05] px-3 py-1.5 text-[11px] font-semibold text-gold hover:bg-gold/[0.1]"
           >
-            Join Ghanima
+            Join Ghanima's Lab
           </a>
         </div>
       </header>
@@ -75,7 +75,7 @@ export default async function PublicProfilePage({ params }: Props) {
           <div>
             <h1 className="text-2xl font-black text-cream">{username}</h1>
             <p className="text-[12px] text-cream/30">
-              Ghanima member · &ldquo;The Worldbuilder&rdquo;
+              Ghanima's Lab member · &ldquo;The Worldbuilder&rdquo;
             </p>
           </div>
         </div>

@@ -9,16 +9,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // slug format: userId-period e.g. "abc123-2025"
   const ogUrl = `/api/og?title=Wrapped&hours=847&titles=42&personality=The%20Worldbuilder&period=2025`;
   return {
-    title: `Ghanima Wrapped — ${slug}`,
-    description: "Check out my entertainment year in review on Ghanima.",
+    title: `Ghanima's Lab Wrapped — ${slug}`,
+    description: "Check out my entertainment year in review on Ghanima's Lab.",
     openGraph: {
-      title: `Ghanima Wrapped`,
+      title: `Ghanima's Lab Wrapped`,
       description: "My year in entertainment, summarized.",
       images: [{ url: ogUrl, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `Ghanima Wrapped`,
+      title: `Ghanima's Lab Wrapped`,
       description: "My year in entertainment, summarized.",
       images: [ogUrl],
     },
@@ -45,7 +45,7 @@ export default async function PublicWrappedPage({ params }: Props) {
         <div className="mb-4 flex items-center justify-center gap-2">
           <div className="h-6 w-6 rounded-full bg-gradient-to-br from-gold to-[#8b8882]" />
           <span className="text-[11px] font-extrabold uppercase tracking-[4px] text-gold">
-            Ghanima
+            Ghanima's Lab
           </span>
         </div>
 
@@ -54,7 +54,7 @@ export default async function PublicWrappedPage({ params }: Props) {
           Wrapped
         </h1>
         <p className="mb-8 text-[13px] text-cream/30">
-          Shared by a Ghanima user · <span className="text-cream/40">{slug}</span>
+          Shared from Ghanima&apos;s Lab · <span className="text-cream/40">{slug}</span>
         </p>
 
         {/* Wrapped preview card */}
@@ -89,7 +89,7 @@ export default async function PublicWrappedPage({ params }: Props) {
             background: "linear-gradient(135deg, #c5c2bc, #8b8882)",
           }}
         >
-          Create Your Own on Ghanima
+          Create Your Own on Ghanima's Lab
         </a>
       </div>
     </div>

@@ -93,7 +93,7 @@ export default function OnboardingPage() {
       <div className="mb-8 text-center">
         <CatLogo size={42} />
         <h1 className="mt-2 text-3xl font-black gradient-gold">
-          Welcome to Ghanima
+          Welcome to Ghanima's Lab
         </h1>
         <p className="mt-1 text-[13px] text-cream/35">
           Let&apos;s set up your entertainment profile

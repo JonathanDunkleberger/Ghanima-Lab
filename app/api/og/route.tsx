@@ -146,7 +146,7 @@ export async function GET(req: NextRequest) {
             letterSpacing: 2,
           }}
         >
-          feyris.app
+          ghanimaslab.com
         </div>
       </div>
     ),
