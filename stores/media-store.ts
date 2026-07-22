@@ -1,7 +1,6 @@
 "use client";
 
 import { create } from "zustand";
-import type { ReviewItem } from "@/hooks/useReviews";
 import type { MediaItem } from "./app-store";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
@@ -11,7 +10,6 @@ interface MediaState {
   watched: string[];
   watchlist: string[];
   ratings: Record<string, number>;
-  reviews: Record<string, ReviewItem[]>;
   // Items cache — store full MediaItem objects so we can compute taste profile
   items: Record<string, MediaItem>;
 
@@ -21,7 +19,6 @@ interface MediaState {
   toggleWatchlist: (id: string, item?: MediaItem) => void;
   removeFromWatchlist: (id: string) => void;
   setRating: (id: string, value: number) => void;
-  addReview: (id: string, review: { user: string; rating: number; text: string }) => void;
   cacheItem: (item: MediaItem) => void;
 
   // Queries
@@ -29,7 +26,6 @@ interface MediaState {
   isWatched: (id: string) => boolean;
   isOnWatchlist: (id: string) => boolean;
   getRating: (id: string) => number;
-  getReviews: (id: string) => ReviewItem[];
 
   // Hydrate from localStorage
   _hydrated: boolean;
@@ -42,7 +38,6 @@ const KEYS = {
   watched: "feyris-watched",
   watchlist: "feyris-watchlist",
   ratings: "feyris-ratings",
-  reviews: "feyris-reviews",
   items: "feyris-items-cache",
 } as const;
 
@@ -80,7 +75,6 @@ export const useMediaStore = create<MediaState>((set, get) => ({
   watched: [],
   watchlist: [],
   ratings: {},
-  reviews: {},
   items: {},
   _hydrated: false,
 
@@ -91,7 +85,6 @@ export const useMediaStore = create<MediaState>((set, get) => ({
       watched: loadArray(KEYS.watched),
       watchlist: loadArray(KEYS.watchlist),
       ratings: loadRecord<number>(KEYS.ratings),
-      reviews: loadRecord<ReviewItem[]>(KEYS.reviews),
       items: loadRecord<MediaItem>(KEYS.items),
       _hydrated: true,
     });
@@ -103,7 +96,6 @@ export const useMediaStore = create<MediaState>((set, get) => ({
     saveJSON(KEYS.items, items);
   },
 
-  // ── Favorites ───────────────────────────────────────────────────────────
   toggleFavorite: (id, item) => {
     const prev = get().favorites;
     const next = prev.includes(id)
@@ -118,7 +110,6 @@ export const useMediaStore = create<MediaState>((set, get) => ({
     }
   },
 
-  // ── Watched ─────────────────────────────────────────────────────────────
   toggleWatched: (id, item) => {
     const prev = get().watched;
     const next = prev.includes(id)
@@ -133,7 +124,6 @@ export const useMediaStore = create<MediaState>((set, get) => ({
     }
   },
 
-  // ── Watchlist ───────────────────────────────────────────────────────────
   toggleWatchlist: (id, item) => {
     const prev = get().watchlist;
     const next = prev.includes(id)
@@ -154,7 +144,6 @@ export const useMediaStore = create<MediaState>((set, get) => ({
     saveJSON(KEYS.watchlist, next);
   },
 
-  // ── Ratings ─────────────────────────────────────────────────────────────
   setRating: (id, value) => {
     const next = { ...get().ratings };
     if (value <= 0) delete next[id];
@@ -163,30 +152,8 @@ export const useMediaStore = create<MediaState>((set, get) => ({
     saveJSON(KEYS.ratings, next);
   },
 
-  // ── Reviews ─────────────────────────────────────────────────────────────
-  addReview: (id, data) => {
-    const existing = get().reviews[id] || [];
-    const newReview: ReviewItem = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      user: data.user,
-      rating: data.rating,
-      text: data.text,
-      date: new Date().toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
-      helpful: 0,
-    };
-    const next = { ...get().reviews, [id]: [...existing, newReview] };
-    set({ reviews: next });
-    saveJSON(KEYS.reviews, next);
-  },
-
-  // ── Queries (read directly from state) ────────────────────────────────
   isFavorite: (id) => get().favorites.includes(id),
   isWatched: (id) => get().watched.includes(id),
   isOnWatchlist: (id) => get().watchlist.includes(id),
   getRating: (id) => get().ratings[id] ?? 0,
-  getReviews: (id) => get().reviews[id] ?? [],
 }));

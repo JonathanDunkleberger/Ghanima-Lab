@@ -4,47 +4,48 @@
 
 @layer base {
   :root {
-    --background: 240 33% 4%;
-    --foreground: 36 33% 90%;
-    --card: 240 27% 5%;
-    --card-foreground: 36 33% 90%;
-    --popover: 240 27% 5%;
-    --popover-foreground: 36 33% 90%;
+    /* Cool charcoal + pearl foreground (silver Persian undertone) */
+    --background: 240 20% 5%;
+    --foreground: 40 12% 91%;
+    --card: 240 16% 6%;
+    --card-foreground: 40 12% 91%;
+    --popover: 240 16% 6%;
+    --popover-foreground: 40 12% 91%;
     --primary: 41 56% 54%;
-    --primary-foreground: 240 33% 4%;
-    --secondary: 240 20% 10%;
-    --secondary-foreground: 36 33% 90%;
-    --muted: 240 15% 12%;
-    --muted-foreground: 36 15% 55%;
+    --primary-foreground: 240 20% 5%;
+    --secondary: 240 12% 11%;
+    --secondary-foreground: 40 12% 91%;
+    --muted: 240 10% 13%;
+    --muted-foreground: 40 6% 58%;
     --accent: 41 56% 54%;
-    --accent-foreground: 240 33% 4%;
+    --accent-foreground: 240 20% 5%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 36 33% 90%;
-    --border: 240 10% 12%;
-    --input: 240 10% 12%;
+    --destructive-foreground: 40 12% 91%;
+    --border: 240 8% 14%;
+    --input: 240 8% 14%;
     --ring: 41 56% 54%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 33% 4%;
-    --foreground: 36 33% 90%;
-    --card: 240 27% 5%;
-    --card-foreground: 36 33% 90%;
-    --popover: 240 27% 5%;
-    --popover-foreground: 36 33% 90%;
+    --background: 240 20% 5%;
+    --foreground: 40 12% 91%;
+    --card: 240 16% 6%;
+    --card-foreground: 40 12% 91%;
+    --popover: 240 16% 6%;
+    --popover-foreground: 40 12% 91%;
     --primary: 41 56% 54%;
-    --primary-foreground: 240 33% 4%;
-    --secondary: 240 20% 10%;
-    --secondary-foreground: 36 33% 90%;
-    --muted: 240 15% 12%;
-    --muted-foreground: 36 15% 55%;
+    --primary-foreground: 240 20% 5%;
+    --secondary: 240 12% 11%;
+    --secondary-foreground: 40 12% 91%;
+    --muted: 240 10% 13%;
+    --muted-foreground: 40 6% 58%;
     --accent: 41 56% 54%;
-    --accent-foreground: 240 33% 4%;
+    --accent-foreground: 240 20% 5%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 36 33% 90%;
-    --border: 240 10% 12%;
-    --input: 240 10% 12%;
+    --destructive-foreground: 40 12% 91%;
+    --border: 240 8% 14%;
+    --input: 240 8% 14%;
     --ring: 41 56% 54%;
   }
 }
@@ -55,6 +56,10 @@
   }
   body {
     @apply bg-fey-black text-cream font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(196, 193, 187, 0.05), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 90% 0%, rgba(201, 168, 176, 0.035), transparent 50%);
+    background-attachment: fixed;
   }
 }
 
@@ -77,11 +82,11 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(200, 164, 78, 0.12);
+  background: rgba(196, 193, 187, 0.14);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(200, 164, 78, 0.25);
+  background: rgba(196, 193, 187, 0.28);
 }
 
 /* Animations */
@@ -105,21 +110,27 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.gradient-silver {
+  background: linear-gradient(135deg, #9a968f, #ece9e4, #c9a8b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .gradient-multi {
-  background: linear-gradient(135deg, #c8a44e, #e8d5a0, #a0c4a8);
+  background: linear-gradient(135deg, #c8a44e, #e8d5a0, #c4c1bb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glass effect */
+/* Glass effect — cooler silver mist */
 .glass {
-  background: rgba(14, 14, 20, 0.98);
+  background: rgba(16, 16, 22, 0.97);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 }
 .glass-light {
-  background: rgba(20, 20, 28, 0.96);
+  background: rgba(22, 22, 30, 0.95);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
 }

@@ -42,12 +42,12 @@ const config: Config = {
           foreground: "hsl(var(--destructive-foreground))",
         },
 
-        // ─── Feyris Design System ───
+        // ─── Feyris Design System (silver dollface Persian / chinchilla) ───
         fey: {
-          black: "#0a0a0f",
-          surface: "#0e0e14",
-          elevated: "#12121a",
-          hover: "#16161f",
+          black: "#0b0b10",
+          surface: "#101016",
+          elevated: "#15151c",
+          hover: "#1a1a22",
         },
         gold: {
           DEFAULT: "#c8a44e",
@@ -55,16 +55,25 @@ const config: Config = {
           dark: "#8a7235",
           muted: "rgba(200,164,78,0.1)",
         },
-        cream: "#f0ebe0",
+        // Cool pearl — less warm cream, more chinchilla silver-white
+        cream: "#ebe8e3",
+        pearl: "#f4f2ef",
+        blush: {
+          DEFAULT: "#c9a8b0",
+          soft: "rgba(201,168,176,0.14)",
+          muted: "rgba(201,168,176,0.06)",
+        },
         royal: {
           DEFAULT: "#6b4ba3",
           light: "#9b7fd4",
           dark: "#4a3270",
         },
         silver: {
-          DEFAULT: "#c9c6c0",
-          light: "#f0ede6",
-          dark: "#8f8b83",
+          DEFAULT: "#c4c1bb",
+          light: "#ece9e4",
+          mid: "#9a968f",
+          dark: "#6e6b65",
+          mist: "rgba(196,193,187,0.08)",
         },
         // Media type colors
         type: {

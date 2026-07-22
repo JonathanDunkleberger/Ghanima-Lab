@@ -17,14 +17,13 @@ import {
   Loader2,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useUser } from "@clerk/nextjs";
 import { useQuery } from "@tanstack/react-query";
 import { MEDIA_TYPES } from "@/lib/constants";
 import type { MediaItem } from "@/stores/app-store";
 import { useAppStore } from "@/stores/app-store";
 import { useMediaStore } from "@/stores/media-store";
-import type { ReviewItem } from "@/hooks/useReviews";
 import { RatingSlider } from "@/components/reviews/RatingInput";
+import { RabbitRoom } from "@/components/room/RabbitRoom";
 import { MediaCard } from "./MediaCard";
 import { CastCarousel } from "./CastCarousel";
 import { VideoCarousel } from "./VideoCarousel";
@@ -84,24 +83,17 @@ function getRatingSource(mediaType: string): string {
 // ─── Component ──────────────────────────────────────────────────────────────
 export function MediaDetailPanel() {
   const { selectedItem, setSelectedItem } = useAppStore();
-  const { user, isSignedIn } = useUser();
   const favorites = useMediaStore((s) => s.favorites);
   const watched = useMediaStore((s) => s.watched);
   const watchlist = useMediaStore((s) => s.watchlist);
   const ratings = useMediaStore((s) => s.ratings);
-  const reviewsMap = useMediaStore((s) => s.reviews);
   const toggleFavorite = useMediaStore((s) => s.toggleFavorite);
   const toggleWatched = useMediaStore((s) => s.toggleWatched);
   const toggleWatchlist = useMediaStore((s) => s.toggleWatchlist);
   const removeFromWatchlist = useMediaStore((s) => s.removeFromWatchlist);
   const setRating = useMediaStore((s) => s.setRating);
-  const addReview = useMediaStore((s) => s.addReview);
-  const [showReviews, setShowReviews] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [ratingMode, setRatingMode] = useState(false);
-  const [writingReview, setWritingReview] = useState(false);
-  const [reviewText, setReviewText] = useState("");
-  const [reviewRating, setReviewRating] = useState(0);
 
   // Close on Escape
   useEffect(() => {
@@ -114,12 +106,8 @@ export function MediaDetailPanel() {
 
   // Reset local state when item changes
   useEffect(() => {
-    setShowReviews(false);
     setShowFullDescription(false);
     setRatingMode(false);
-    setWritingReview(false);
-    setReviewText("");
-    setReviewRating(0);
   }, [selectedItem?.id]);
 
   // Fetch enriched detail data — must be above the conditional return (Rules of Hooks)
@@ -145,7 +133,6 @@ export function MediaDetailPanel() {
   const isWatchedItem = watched.includes(item.id);
   const onWatchlist = watchlist.includes(item.id);
   const userRating = ratings[item.id] ?? 0;
-  const reviews = reviewsMap[item.id] ?? [];
   const ratingSource = getRatingSource(item.media_type);
 
   // Merge enriched data with selected item (enriched takes priority for extended fields)
@@ -229,22 +216,6 @@ export function MediaDetailPanel() {
 
   const handleWatchlist = () => {
     toggleWatchlist(item.id, item);
-  };
-
-  const handleSubmitReview = () => {
-    if (reviewRating <= 0) return;
-    const username =
-      isSignedIn && user
-        ? user.username || user.firstName || "User"
-        : "Anonymous";
-    addReview(item.id, {
-      user: username,
-      rating: reviewRating,
-      text: reviewText.trim(),
-    });
-    setReviewText("");
-    setReviewRating(0);
-    setWritingReview(false);
   };
 
   return (
@@ -813,125 +784,7 @@ export function MediaDetailPanel() {
             </div>
             );
           })()}
-          <div className="border-t border-white/[0.04] mt-6 pt-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-bold text-[#f0ebe0]/80">
-                Community Reviews
-                {reviews.length > 0 && (
-                  <span className="ml-2 text-xs font-normal text-[#f0ebe0]/30">
-                    ({reviews.length})
-                  </span>
-                )}
-              </h3>
-              <button
-                onClick={() => setWritingReview(!writingReview)}
-                className="text-xs font-semibold text-[#c8a44e] hover:text-[#c8a44e]/80 transition-colors"
-              >
-                Write a Review
-              </button>
-            </div>
-
-            {/* Write review form */}
-            <AnimatePresence>
-              {writingReview && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="mb-6 overflow-hidden"
-                >
-                  <div className="rounded-xl border border-white/[0.04] bg-white/[0.02] p-4">
-                    <div className="mb-3">
-                      <RatingSlider
-                        value={reviewRating}
-                        onChange={setReviewRating}
-                        label="Your rating"
-                      />
-                    </div>
-                    <textarea
-                      placeholder="Share your thoughts... (optional)"
-                      value={reviewText}
-                      onChange={(e) => setReviewText(e.target.value)}
-                      maxLength={2000}
-                      rows={3}
-                      className="mb-3 w-full resize-none rounded-lg border border-white/[0.06] bg-transparent px-3 py-2.5 text-sm text-[#f0ebe0] placeholder:text-[#f0ebe0]/20 focus:border-[#c8a44e]/30 focus:outline-none"
-                    />
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-[#f0ebe0]/20">
-                        {isSignedIn
-                          ? `Posting as ${user?.username || user?.firstName || "User"}`
-                          : "Posting as Anonymous"}
-                      </span>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => setWritingReview(false)}
-                          className="px-3 py-1.5 text-xs text-[#f0ebe0]/40 hover:text-[#f0ebe0]/60"
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          onClick={handleSubmitReview}
-                          disabled={reviewRating <= 0}
-                          className="rounded-lg px-4 py-1.5 text-xs font-bold text-[#0a0a0f] transition-all hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed"
-                          style={{
-                            background: "#c8a44e",
-                          }}
-                        >
-                          Post Review
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Review list */}
-            {reviews.length === 0 ? (
-              <p className="text-sm text-[#f0ebe0]/20 text-center py-6">
-                No reviews yet. Be the first!
-              </p>
-            ) : (
-              <div className="space-y-4">
-                {[...reviews]
-                  .sort((a, b) => (b.helpful || 0) - (a.helpful || 0))
-                  .map((r: ReviewItem) => (
-                    <div
-                      key={r.id}
-                      className="rounded-xl border border-white/[0.03] bg-white/[0.015] p-4"
-                    >
-                      <div className="mb-2 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#c8a44e]/20">
-                            <User size={12} className="text-[#c8a44e]" />
-                          </div>
-                          <span className="text-xs font-semibold text-[#f0ebe0]/70">
-                            {r.user || "Anonymous"}
-                          </span>
-                          <span className="text-xs text-[#f0ebe0]/20">
-                            {r.date}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Star
-                            size={11}
-                            className="fill-[#c8a44e] text-[#c8a44e]"
-                          />
-                          <span className="text-xs font-bold text-[#c8a44e]">
-                            {r.rating}
-                          </span>
-                        </div>
-                      </div>
-                      {r.text && (
-                        <p className="text-sm leading-relaxed text-[#f0ebe0]/50">
-                          {r.text}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-              </div>
-            )}
-          </div>
+          <RabbitRoom media={display} />
         </div>
       </div>
     </div>

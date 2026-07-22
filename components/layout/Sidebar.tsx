@@ -13,11 +13,11 @@ export function Sidebar() {
 
   return (
     <nav
-      className="f-sidebar fixed left-0 top-0 z-[100] flex min-h-screen flex-col border-r border-gold/[0.04] transition-all duration-300"
+      className="f-sidebar fixed left-0 top-0 z-[100] flex min-h-screen flex-col border-r border-silver/10 transition-all duration-300"
       style={{
         width: sidebarOpen ? 212 : 62,
         background:
-          "linear-gradient(180deg, rgba(14,14,20,0.99), rgba(10,10,14,1))",
+          "linear-gradient(180deg, rgba(16,16,22,0.99), rgba(11,11,16,1))",
       }}
     >
       {/* Logo */}
@@ -36,8 +36,8 @@ export function Sidebar() {
       {/* Sidebar toggle — sits on the vertical mid-edge so it never collides with the logo */}
       <button
         onClick={toggleSidebar}
-        className="absolute -right-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md border border-gold/[0.08] text-cream/30 transition-colors hover:text-cream/60"
-        style={{ background: "rgba(14,14,20,0.99)" }}
+        className="absolute -right-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md border border-silver/15 text-cream/30 transition-colors hover:text-cream/60"
+        style={{ background: "rgba(16,16,22,0.99)" }}
         aria-label="Toggle sidebar"
       >
         {sidebarOpen ? <PanelLeftClose size={13} /> : <PanelLeft size={13} />}
