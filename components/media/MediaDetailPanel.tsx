@@ -173,27 +173,65 @@ export function MediaDetailPanel() {
     return parts;
   })();
 
-  // ── Time to consume calculation ──
-  const consumeTime = (() => {
+  // ── Length / time-to-consume chips ──
+  const playtime = display.metadata?.playtime as
+    | { hastily?: number; normally?: number; completely?: number }
+    | undefined;
+  const lengthChips = (() => {
+    const chips: string[] = [];
     switch (display.media_type) {
       case "anime":
-        if (display.runtime) return `~${Math.round((display.runtime * 24) / 60)} hours to binge`;
-        return null;
+        if (display.runtime) {
+          chips.push(`${display.runtime} episodes`);
+          chips.push(`~${Math.round((display.runtime * 24) / 60)}h binge`);
+        }
+        break;
       case "tv":
-        if (display.runtime) return `~${Math.round((display.runtime * 45) / 60)} hours to binge`;
-        return null;
+        if (display.runtime) {
+          chips.push(`${display.runtime} episodes`);
+          chips.push(`~${Math.round((display.runtime * 45) / 60)}h binge`);
+        }
+        break;
       case "film":
-        if (display.runtime) return `${Math.floor(display.runtime / 60)}h ${display.runtime % 60}min`;
-        return null;
+        if (display.runtime) {
+          const h = Math.floor(display.runtime / 60);
+          const m = display.runtime % 60;
+          chips.push(h > 0 ? `${h}h ${m}min` : `${display.runtime}min`);
+        }
+        break;
       case "book":
         if (display.runtime) {
-          const hours = Math.round((display.runtime / 250) * 10) / 10;
-          return `~${hours} hours to read (${display.runtime} pages)`;
+          const readH = Math.round((display.runtime / 250) * 10) / 10;
+          // ~155 wpm ≈ 250 words/page → pages/155 ≈ hours listen
+          const listenH = Math.round((display.runtime / 155) * 10) / 10;
+          chips.push(`${display.runtime} pages`);
+          chips.push(`~${readH}h to read`);
+          chips.push(`~${listenH}h audiobook`);
         }
-        return null;
-      default:
-        return null;
+        break;
+      case "game":
+        if (playtime?.normally != null) chips.push(`~${playtime.normally}h to beat`);
+        else if (display.runtime) chips.push(`~${display.runtime}h to beat`);
+        if (playtime?.hastily != null) chips.push(`~${playtime.hastily}h rushed`);
+        if (playtime?.completely != null) chips.push(`~${playtime.completely}h completion`);
+        break;
     }
+    return chips;
+  })();
+  const consumeTime = lengthChips[0] || null;
+
+  const outboundLinks = (
+    (display.metadata?.links as { label: string; url: string }[] | undefined) ||
+    []
+  ).filter((l) => l?.url && l?.label);
+
+  const exploreItems = (() => {
+    const consumedSet = new Set([...favorites, ...watched, ...watchlist]);
+    const pool =
+      display.explore_more && display.explore_more.length > 0
+        ? display.explore_more
+        : display.related || [];
+    return pool.filter((rel) => !consumedSet.has(rel.id)).slice(0, 5);
   })();
 
   // ── Action handlers with cross-list logic ──
@@ -364,7 +402,7 @@ export function MediaDetailPanel() {
 
           {/* 3. GENRES */}
           {display.genres && display.genres.length > 0 && (
-            <div className="mb-4 flex flex-wrap gap-[6px]">
+            <div className="mb-3 flex flex-wrap gap-[6px]">
               {display.genres.map((g) => (
                 <span
                   key={g}
@@ -377,6 +415,39 @@ export function MediaDetailPanel() {
                 >
                   {g}
                 </span>
+              ))}
+            </div>
+          )}
+
+          {/* 3b. LENGTH CHIPS */}
+          {lengthChips.length > 0 && (
+            <div className="mb-3 flex flex-wrap gap-1.5">
+              {lengthChips.map((chip) => (
+                <span
+                  key={chip}
+                  className="inline-flex items-center gap-1 rounded-md border border-silver/15 bg-silver/mist px-2 py-1 text-[10.5px] font-medium text-cream/55"
+                >
+                  <Clock size={10} className="text-silver/70" />
+                  {chip}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* 3c. OUTBOUND LINKS */}
+          {outboundLinks.length > 0 && (
+            <div className="mb-4 flex flex-wrap gap-1.5">
+              {outboundLinks.map((link) => (
+                <a
+                  key={`${link.label}-${link.url}`}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 rounded-md border border-silver/20 bg-transparent px-2.5 py-1 text-[10.5px] font-semibold text-silver transition-colors hover:border-silver/40 hover:bg-silver/mist hover:text-pearl"
+                >
+                  <ExternalLink size={10} />
+                  {link.label}
+                </a>
               ))}
             </div>
           )}
@@ -612,27 +683,40 @@ export function MediaDetailPanel() {
                 {display.media_type === "game" ? "Platforms" : display.media_type === "book" ? "Where to Read" : "Where to Watch"}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {display.where_to_watch.map((w, i) => (
-                  <a
-                    key={i}
-                    href={w.url || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2 text-[11px] font-medium text-[#f0ebe0]/60 transition-colors hover:bg-white/[0.06]"
-                  >
-                    {w.logo_url && (
-                      <Image
-                        src={w.logo_url}
-                        alt={w.provider}
-                        width={20}
-                        height={20}
-                        className="rounded-[3px]"
-                      />
-                    )}
-                    {w.provider}
-                    {w.url && <ExternalLink size={10} className="text-[#f0ebe0]/25" />}
-                  </a>
-                ))}
+                {display.where_to_watch.map((w, i) => {
+                  const className =
+                    "flex items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2 text-[11px] font-medium text-[#f0ebe0]/60 transition-colors hover:bg-white/[0.06]";
+                  const inner = (
+                    <>
+                      {w.logo_url && (
+                        <Image
+                          src={w.logo_url}
+                          alt={w.provider}
+                          width={20}
+                          height={20}
+                          className="rounded-[3px]"
+                        />
+                      )}
+                      {w.provider}
+                      {w.url && <ExternalLink size={10} className="text-[#f0ebe0]/25" />}
+                    </>
+                  );
+                  return w.url ? (
+                    <a
+                      key={i}
+                      href={w.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={className}
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <span key={i} className={className}>
+                      {inner}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -710,19 +794,15 @@ export function MediaDetailPanel() {
             </div>
           )}
 
-          {/* 11. YOU MIGHT ALSO LIKE */}
-          {display.related && display.related.length > 0 && (() => {
-            // Filter out items user has already consumed
-            const consumedSet = new Set([...favorites, ...watched, ...watchlist]);
-            const filteredRelated = display.related!.filter(
-              (rel) => !consumedSet.has(rel.id)
-            );
-            if (filteredRelated.length === 0) return null;
-            return (
+          {/* 11. EXPLORE MORE — cross-media click-around */}
+          {exploreItems.length > 0 && (
             <div className="mb-5">
-              <h3 className="mb-2 text-[12px] font-bold uppercase tracking-wider text-[#f0ebe0]/30">
-                You Might Also Like
+              <h3 className="mb-1 text-[12px] font-bold uppercase tracking-wider text-[#f0ebe0]/30">
+                Explore more
               </h3>
+              <p className="mb-2.5 text-[11px] text-cream/25">
+                Across films, TV, anime, games, and books
+              </p>
               <div
                 className="scrollbar-hide"
                 style={{
@@ -741,49 +821,63 @@ export function MediaDetailPanel() {
                   WebkitOverflowScrolling: "touch",
                 } as React.CSSProperties}
               >
-                {filteredRelated.slice(0, 15).map((rel) => (
-                  <div
-                    key={rel.id}
-                    style={{
-                      flexShrink: 0,
-                      scrollSnapAlign: "start",
-                      width: "120px",
-                      overflow: "visible",
-                    }}
-                  >
-                    <button
-                      onClick={() => setSelectedItem(rel)}
-                      className="group/rel relative w-full cursor-pointer"
-                      style={{ overflow: "visible" }}
+                {exploreItems.map((rel) => {
+                  const relCfg =
+                    MEDIA_TYPES[rel.media_type as keyof typeof MEDIA_TYPES];
+                  const relColor = relCfg?.color || "#c5c2bc";
+                  return (
+                    <div
+                      key={rel.id}
+                      style={{
+                        flexShrink: 0,
+                        scrollSnapAlign: "start",
+                        width: "120px",
+                        overflow: "visible",
+                      }}
                     >
-                      <div className="relative aspect-[2/3] rounded-lg overflow-hidden transition-all duration-300 ease-out group-hover/rel:scale-105 group-hover/rel:-translate-y-1 group-hover/rel:shadow-lg">
-                        {rel.cover_image_url ? (
-                          <Image
-                            src={rel.cover_image_url}
-                            alt={rel.title}
-                            fill
-                            className="object-cover"
-                            sizes="120px"
-                          />
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center bg-fey-surface text-[10px] text-[#f0ebe0]/20">
-                            {rel.title}
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-2">
-                          <span className="line-clamp-2 text-[10px] font-semibold leading-tight text-white">
-                            {rel.title}
+                      <button
+                        onClick={() => setSelectedItem(rel)}
+                        className="group/rel relative w-full cursor-pointer text-left"
+                        style={{ overflow: "visible" }}
+                      >
+                        <div className="relative aspect-[2/3] rounded-lg overflow-hidden transition-all duration-300 ease-out group-hover/rel:scale-105 group-hover/rel:-translate-y-1 group-hover/rel:shadow-lg">
+                          {rel.cover_image_url ? (
+                            <Image
+                              src={rel.cover_image_url}
+                              alt={rel.title}
+                              fill
+                              className="object-cover"
+                              sizes="120px"
+                            />
+                          ) : (
+                            <div className="flex h-full w-full items-center justify-center bg-fey-surface text-[10px] text-[#f0ebe0]/20">
+                              {rel.title}
+                            </div>
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+                          <span
+                            className="absolute left-1.5 top-1.5 rounded px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wide"
+                            style={{
+                              background: "rgba(12,12,14,0.75)",
+                              color: relColor,
+                              border: `1px solid ${relColor}44`,
+                            }}
+                          >
+                            {relCfg?.label || rel.media_type}
                           </span>
+                          <div className="absolute bottom-0 left-0 right-0 p-2">
+                            <span className="line-clamp-2 text-[10px] font-semibold leading-tight text-white">
+                              {rel.title}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    </button>
-                  </div>
-                ))}
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-            );
-          })()}
+          )}
           <RabbitRoom media={display} />
         </div>
       </div>

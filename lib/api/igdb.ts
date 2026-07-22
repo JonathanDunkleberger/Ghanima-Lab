@@ -60,17 +60,49 @@ export async function getGameDetails(igdbId: number) {
   const results = await igdbFetch(
     "/games",
     `where id = ${igdbId};
-     fields name,cover.url,first_release_date,genres.name,
+     fields name,url,cover.url,first_release_date,genres.name,
             platforms.name,rating,total_rating,aggregated_rating,
             summary,storyline,
             videos.*,screenshots.url,artworks.url,
             involved_companies.company.name,involved_companies.developer,
             involved_companies.publisher,
             game_modes.name,themes.name,
-            similar_games.name,similar_games.cover.url,similar_games.id;
+            similar_games.name,similar_games.cover.url,similar_games.id,
+            game_time_to_beats.hastily,game_time_to_beats.normally,game_time_to_beats.completely,
+            websites.url,websites.category;
      limit 1;`
   );
   return results[0] || null;
+}
+
+/** IGDB website category → label */
+export function igdbWebsiteLabel(category: number | undefined): string | null {
+  switch (category) {
+    case 1:
+      return "Official site";
+    case 13:
+      return "Steam";
+    case 16:
+      return "Epic Games";
+    case 17:
+      return "GOG";
+    case 14:
+      return "Reddit";
+    case 5:
+      return "Twitter";
+    case 9:
+      return "YouTube";
+    case 18:
+      return "Discord";
+    default:
+      return null;
+  }
+}
+
+/** Convert IGDB seconds → rounded hours */
+export function secondsToHours(seconds: number | undefined | null): number | undefined {
+  if (seconds == null || seconds <= 0) return undefined;
+  return Math.round((seconds / 3600) * 10) / 10;
 }
 
 export async function getPopularGames(limit: number = 20) {

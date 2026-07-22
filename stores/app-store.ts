@@ -30,11 +30,20 @@ export interface MediaItem {
   where_to_watch?: { provider: string; logo_url?: string; url?: string; type: "stream" | "rent" | "buy" }[];
   seasons?: { number: number; episode_count: number; name: string; air_date?: string }[];
   related?: MediaItem[];
+  /** Cross-media discovery strip (mixed types, max ~5) */
+  explore_more?: MediaItem[];
   tags?: string[];
   avg_rating?: number;
   review_count?: number;
   status_text?: string; // "Airing", "Completed", "In Production"
-  runtime?: number; // minutes for film, episode count for tv/anime
+  /**
+   * Length units by media_type:
+   * - film: minutes
+   * - tv / anime: episode count
+   * - book: page count
+   * - game: main-story hours (IGDB normally)
+   */
+  runtime?: number;
 }
 
 export interface LibraryEntry {

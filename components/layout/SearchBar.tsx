@@ -65,25 +65,25 @@ export function SearchBar() {
   };
 
   return (
-    <div className="relative w-full max-w-2xl">
+    <div className="relative w-full max-w-4xl">
       <form onSubmit={handleSubmit}>
         <div
-          className={`flex items-center gap-2 rounded-lg border px-3 py-2 transition-all duration-200 ${
+          className={`flex items-center gap-3 rounded-xl border px-4 py-3.5 md:px-5 md:py-4 transition-all duration-200 ${
             focused
-              ? "border-silver/25 bg-fey-elevated shadow-[0_0_12px_rgba(197,194,188,0.06)]"
+              ? "border-silver/25 bg-fey-elevated shadow-[0_0_16px_rgba(197,194,188,0.08)]"
               : "border-silver/10 bg-fey-surface"
           }`}
         >
           {isSearching ? (
             <Loader2
-              size={14}
-              className="animate-spin text-gold"
+              size={20}
+              className="animate-spin text-silver shrink-0"
             />
           ) : (
             <Search
-              size={14}
-              className={`transition-colors ${
-                focused ? "text-gold" : "text-cream/20"
+              size={20}
+              className={`shrink-0 transition-colors ${
+                focused ? "text-silver" : "text-cream/25"
               }`}
             />
           )}
@@ -95,15 +95,15 @@ export function SearchBar() {
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             placeholder="Search anime, games, films, books..."
-            className="flex-1 bg-transparent text-[12.5px] text-cream placeholder:text-cream/20 outline-none"
+            className="flex-1 bg-transparent text-[15px] md:text-base text-cream placeholder:text-cream/25 outline-none"
           />
           {query && (
             <button
               type="button"
               onClick={handleClear}
-              className="text-cream/25 hover:text-cream/50 transition-colors"
+              className="text-cream/25 hover:text-cream/50 transition-colors shrink-0"
             >
-              <X size={13} />
+              <X size={18} />
             </button>
           )}
         </div>

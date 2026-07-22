@@ -1,12 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server";
-import { getTMDBDetails } from "@/lib/api/tmdb";
-import { getAnimeDetails } from "@/lib/api/jikan";
-import { getGameDetails } from "@/lib/api/igdb";
-import { getBookDetails, bookCoverUrl } from "@/lib/api/books";
+import { getTMDBDetails, getTMDBTrending } from "@/lib/api/tmdb";
+import { getAnimeDetails, getTopAnime } from "@/lib/api/jikan";
+import {
+  getGameDetails,
+  getPopularGames,
+  igdbWebsiteLabel,
+  secondsToHours,
+} from "@/lib/api/igdb";
+import { getBookDetails, bookCoverUrl, browseBooks, searchBooks } from "@/lib/api/books";
+import {
+  normalizeTMDBMovie,
+  normalizeTMDBTV,
+  normalizeJikan,
+  normalizeIGDB,
+  normalizeBook,
+} from "@/lib/api/normalize";
+import type { MediaItem } from "@/stores/app-store";
+import type { MediaType } from "@/lib/constants";
+
+type OutLink = { label: string; url: string };
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
@@ -16,7 +32,6 @@ export async function GET(
   }
 
   try {
-    // Parse slug format: "tmdb-12345", "mal-67890", "igdb-111", "book-isbn"
     const [source, ...idParts] = slug.split("-");
     const sourceId = idParts.join("-");
 
@@ -29,10 +44,9 @@ export async function GET(
     if (source === "tmdb") {
       const id = parseInt(sourceId);
       if (isNaN(id)) return NextResponse.json({ error: "Invalid TMDB ID" }, { status: 400 });
-      
+
       const data: any = await getTMDBDetails(id, "movie");
       if (!data || data.success === false) {
-        // Try as TV show
         const tvData: any = await getTMDBDetails(id, "tv");
         if (tvData && tvData.success !== false) {
           media = mapTMDB(tvData, "tv");
@@ -43,10 +57,9 @@ export async function GET(
     } else if (source === "mal") {
       const id = parseInt(sourceId);
       if (isNaN(id)) return NextResponse.json({ error: "Invalid MAL ID" }, { status: 400 });
-      
+
       const data: any = await getAnimeDetails(id);
-      if (data) {
-        // Build related anime list from recommendations/relations
+      if (data?.mal_id) {
         const relatedAnime: any[] = [];
         if (data.relations) {
           for (const rel of data.relations) {
@@ -116,15 +129,33 @@ export async function GET(
             mal_members: data.members,
             mal_scored_by: data.scored_by,
             content_rating: data.rating,
+            homepage: data.url,
+            links: [
+              { label: "MyAnimeList", url: `https://myanimelist.net/anime/${data.mal_id}` },
+            ] as OutLink[],
           },
         };
       }
     } else if (source === "igdb") {
       const id = parseInt(sourceId);
       if (isNaN(id)) return NextResponse.json({ error: "Invalid IGDB ID" }, { status: 400 });
-      
+
       const data: any = await getGameDetails(id);
       if (data) {
+        const ttRaw = data.game_time_to_beats;
+        const tt = Array.isArray(ttRaw) ? ttRaw[0] || {} : ttRaw || {};
+        const playtime = {
+          hastily: secondsToHours(tt.hastily),
+          normally: secondsToHours(tt.normally),
+          completely: secondsToHours(tt.completely),
+        };
+        const links: OutLink[] = [];
+        if (data.url) links.push({ label: "IGDB", url: data.url });
+        for (const w of data.websites || []) {
+          const label = igdbWebsiteLabel(w.category);
+          if (label && w.url) links.push({ label, url: w.url });
+        }
+
         media = {
           id: `igdb-${data.id}`,
           media_type: "game",
@@ -147,7 +178,11 @@ export async function GET(
             .map((c: any) => c.company?.name)
             .join(", "),
           igdb_id: data.id,
-          status_text: data.status ? ["Released", "Alpha", "Beta", "Early Access", "Offline", "Cancelled", "Rumored"][data.status] : undefined,
+          // main-story hours for games
+          runtime: playtime.normally,
+          status_text: data.status
+            ? ["Released", "Alpha", "Beta", "Early Access", "Offline", "Cancelled", "Rumored"][data.status]
+            : undefined,
           videos: (data.videos || []).map((v: any) => ({
             id: v.video_id,
             title: v.name || "Gameplay",
@@ -182,6 +217,8 @@ export async function GET(
             igdb_rating: data.rating ? Math.round(data.rating) : undefined,
             aggregated_rating: data.aggregated_rating ? Math.round(data.aggregated_rating) : undefined,
             storyline: data.storyline,
+            playtime,
+            links,
           },
         };
       }
@@ -189,6 +226,21 @@ export async function GET(
       const data: any = await getBookDetails(sourceId);
       if (data) {
         const vol = data.volumeInfo || {};
+        const q = encodeURIComponent(
+          [vol.title, (vol.authors || [])[0]].filter(Boolean).join(" ")
+        );
+        const links: OutLink[] = [];
+        if (vol.previewLink) links.push({ label: "Preview", url: vol.previewLink });
+        if (vol.infoLink) links.push({ label: "Google Books", url: vol.infoLink });
+        links.push({
+          label: "Audible search",
+          url: `https://www.audible.com/search?keywords=${q}`,
+        });
+        links.push({
+          label: "Open Library",
+          url: `https://openlibrary.org/search?q=${q}`,
+        });
+
         media = {
           id: `gbook-${sourceId}`,
           media_type: "book",
@@ -218,6 +270,7 @@ export async function GET(
             previewLink: vol.previewLink,
             infoLink: vol.infoLink,
             subtitle: vol.subtitle,
+            links,
           },
         };
       }
@@ -226,6 +279,8 @@ export async function GET(
     if (!media) {
       return NextResponse.json({ error: "Media not found" }, { status: 404 });
     }
+
+    media.explore_more = await buildExploreMore(media as MediaItem);
 
     return NextResponse.json(media);
   } catch (error) {
@@ -238,12 +293,24 @@ export async function GET(
 }
 
 function mapTMDB(data: any, type: "film" | "tv") {
-  // Extract content rating/certification
   const certifications = data.release_dates?.results || data.content_ratings?.results || [];
   const usCert = certifications.find((c: any) => c.iso_3166_1 === "US");
   const contentRating = type === "film"
     ? usCert?.release_dates?.[0]?.certification
     : usCert?.rating;
+
+  const usProviders = data["watch/providers"]?.results?.US;
+  const providerLink = usProviders?.link as string | undefined;
+  const flatrate = usProviders?.flatrate || [];
+
+  const links: OutLink[] = [
+    {
+      label: "TMDB",
+      url: `https://www.themoviedb.org/${type === "tv" ? "tv" : "movie"}/${data.id}`,
+    },
+  ];
+  if (data.homepage) links.push({ label: "Official site", url: data.homepage });
+  if (providerLink) links.push({ label: "Where to watch", url: providerLink });
 
   return {
     id: `tmdb-${data.id}`,
@@ -291,11 +358,12 @@ function mapTMDB(data: any, type: "film" | "tv") {
           air_date: s.air_date,
         }))
       : undefined,
-    where_to_watch: (data["watch/providers"]?.results?.US?.flatrate || []).map((p: any) => ({
+    where_to_watch: flatrate.map((p: any) => ({
       provider: p.provider_name,
       logo_url: p.logo_path
         ? `https://image.tmdb.org/t/p/w45${p.logo_path}`
         : undefined,
+      url: providerLink,
       type: "stream" as const,
     })),
     tags: (data.keywords?.keywords || data.keywords?.results || []).map((k: any) => k.name),
@@ -321,6 +389,107 @@ function mapTMDB(data: any, type: "film" | "tv") {
       spoken_languages: (data.spoken_languages || []).map((l: any) => l.english_name),
       tagline: data.tagline || undefined,
       vote_count: data.vote_count || undefined,
+      homepage: data.homepage || undefined,
+      links,
     },
   };
+}
+
+async function buildExploreMore(media: MediaItem): Promise<MediaItem[]> {
+  const exclude = new Set<string>([media.id]);
+  const picks: MediaItem[] = [];
+
+  const pushUnique = (items: MediaItem[], limit = 99) => {
+    for (const item of items) {
+      if (picks.length >= 5) break;
+      if (!item?.id || exclude.has(item.id)) continue;
+      if (!item.cover_image_url) continue;
+      exclude.add(item.id);
+      picks.push(item);
+      if (picks.filter((p) => p.media_type === item.media_type).length >= limit) {
+        // soft per-type cap handled by callers
+      }
+    }
+  };
+
+  // 1) Same-type related first (max 2 so room for cross-media)
+  const related = (media.related || []).filter((r) => r.cover_image_url);
+  pushUnique(related.slice(0, 2));
+
+  const genreHint =
+    media.genres?.[0] ||
+    media.tags?.[0] ||
+    media.title.split(/\s+/).slice(0, 2).join(" ");
+
+  const otherTypes: MediaType[] = (
+    ["film", "tv", "anime", "game", "book"] as MediaType[]
+  ).filter((t) => t !== media.media_type);
+
+  // 2) Fetch pools for other types in parallel
+  const pools = await Promise.all(
+    otherTypes.map(async (type) => {
+      try {
+        const items = await fetchPoolForType(type, genreHint);
+        return { type, items };
+      } catch {
+        return { type, items: [] as MediaItem[] };
+      }
+    })
+  );
+
+  // Round-robin across types for diversity
+  let added = true;
+  while (picks.length < 5 && added) {
+    added = false;
+    for (const { items } of pools) {
+      if (picks.length >= 5) break;
+      const next = items.find((i) => i.cover_image_url && !exclude.has(i.id));
+      if (next) {
+        exclude.add(next.id);
+        picks.push(next);
+        added = true;
+      }
+    }
+  }
+
+  // 3) Top up with more same-type related if still short
+  if (picks.length < 5) {
+    pushUnique(related.slice(2));
+  }
+
+  return picks.slice(0, 5);
+}
+
+async function fetchPoolForType(
+  type: MediaType,
+  genreHint: string
+): Promise<MediaItem[]> {
+  switch (type) {
+    case "film": {
+      const rows = await getTMDBTrending("movie", "week");
+      return (rows || []).map(normalizeTMDBMovie);
+    }
+    case "tv": {
+      const rows = await getTMDBTrending("tv", "week");
+      return (rows || []).map(normalizeTMDBTV);
+    }
+    case "anime": {
+      const rows = await getTopAnime("bypopularity", 12);
+      return (rows || []).map((r: Parameters<typeof normalizeJikan>[0]) =>
+        normalizeJikan(r, "anime")
+      );
+    }
+    case "game": {
+      const rows = await getPopularGames(12);
+      return (rows || []).map(normalizeIGDB);
+    }
+    case "book": {
+      const subject = genreHint.split(/[/,&]/)[0]?.trim() || "fiction";
+      let rows = await browseBooks(subject, 10);
+      if (!rows.length) rows = await searchBooks(genreHint || "bestseller");
+      return (rows || []).map(normalizeBook);
+    }
+    default:
+      return [];
+  }
 }

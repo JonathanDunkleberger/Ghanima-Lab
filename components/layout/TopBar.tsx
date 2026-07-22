@@ -11,7 +11,7 @@ export function TopBar() {
 
   return (
     <header
-      className="f-topbar fixed top-0 right-0 z-50 flex h-14 items-center justify-between border-b border-silver/10 px-3 lg:px-4 transition-all duration-300"
+      className="f-topbar fixed top-0 right-0 z-50 flex h-[4.25rem] md:h-[4.75rem] items-center gap-3 border-b border-silver/10 px-3 lg:px-5 transition-all duration-300"
       style={{
         background:
           "linear-gradient(90deg, rgba(18,18,20,0.97), rgba(12,12,14,0.99))",
@@ -24,19 +24,20 @@ export function TopBar() {
           .f-topbar { left: ${sidebarOpen ? 212 : 62}px !important; }
         }
       `}</style>
-      <div className="flex items-center gap-2 md:hidden">
+      <div className="flex shrink-0 items-center gap-2 md:hidden">
         <CatLogo size={24} />
         <span className="text-[15px] font-black tracking-tight gradient-silver">
           Ghanima&apos;s Lab
         </span>
       </div>
-      <div className="hidden md:block" />
 
-      <div className="flex-1 md:flex-none md:mx-auto">
-        <SearchBar />
+      <div className="flex min-w-0 flex-1 justify-center">
+        <div className="w-full max-w-4xl">
+          <SearchBar />
+        </div>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex shrink-0 items-center gap-2">
         {!isSignedIn ? (
           <div className="flex items-center gap-2">
             <SignInButton mode="modal">
